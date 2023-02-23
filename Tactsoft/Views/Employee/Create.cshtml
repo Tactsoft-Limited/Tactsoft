@@ -39,6 +39,13 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
+                                    <label asp-for="IdNumber" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="IdNumber" class="form-control" readonly/>
+                                        <span asp-validation-for="IdNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
                                     <label class="col-md-3 col-form-label">Gender</label>
                                     <div class="col-md-9 pt-2">
                                         <label class="radio-inline ml-3">
@@ -168,4 +175,23 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+
+    $('#DepartmentId').change(function () {
+
+        $.ajax({
+            url: "/Common/GetRandomNumber",
+            data: { departmentId: $('#DepartmentId').val() },
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                //console.log(data)
+                $('#IdNumber').attr('Value',data);
+            }
+        });
+    });
+
+</script>
+
 }

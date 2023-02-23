@@ -41,6 +41,13 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
+                                    <label asp-for="IdNumber" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="IdNumber" class="form-control" readonly/>
+                                        <span asp-validation-for="IdNumber" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
                                     <label class="col-md-3 col-form-label">Gender</label>
                                     <div class="col-md-9 pt-2">
                                         <label class="radio-inline ml-3">
@@ -95,7 +102,7 @@
                                 <div class="row mb-2">
                                     <label asp-for="DepartmentId" class="col-md-3 col-form-label"></label>
                                     <div class="col-md-9">
-                                        <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId">
+                                        <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId" disabled>
                                             <option value="">Select Department</option>
                                         </select>
                                         <span asp-validation-for="DepartmentId" class="text-danger"></span>
