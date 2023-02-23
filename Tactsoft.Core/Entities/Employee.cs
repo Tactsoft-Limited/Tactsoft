@@ -6,6 +6,8 @@ namespace Tactsoft.Core.Entities
 {
     public class Employee : BaseEntity
     {
+        [Display(Name= "Identity Number")]
+        public string IdNumber { get; set; }
 
         [Required]
         public string Name { get; set; }
