@@ -1,7 +1,7 @@
 ﻿using Tactsoft.Core.Base;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
-using Tactsoft.Service.DbDependencies;
+using Tactsoft.Data.DbDependencies;
 
 namespace Tactsoft.Service.Services.Base
 {

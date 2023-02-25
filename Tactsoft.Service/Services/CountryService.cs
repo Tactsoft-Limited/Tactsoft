@@ -1,7 +1,7 @@
 ﻿using Tactsoft.Core.Entities;
 using Tactsoft.Service.Services.Base;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Tactsoft.Service.DbDependencies;
+using Tactsoft.Data.DbDependencies;
 
 namespace Tactsoft.Service.Services
 {

@@ -1,13 +1,11 @@
 ﻿using Tactsoft.Core.Entities;
-using Tactsoft.Core.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Reflection;
-using Tactsoft.Data.DbDependencies;
+using Tactsoft.Service.DbDependencies;
 
-namespace Tactsoft.Service.DbDependencies
+namespace Tactsoft.Data.DbDependencies
 {
     public class AppDbContext:DbContext   
     {

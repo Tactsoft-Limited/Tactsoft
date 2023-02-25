@@ -1,9 +1,6 @@
 ﻿using Tactsoft.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Tactsoft.Service.DbDependencies;
-using AutoMapper.Execution;
-using System.Text.RegularExpressions;
+using Tactsoft.Data.DbDependencies;
 
 namespace Tactsoft.Controllers.Admin
 {

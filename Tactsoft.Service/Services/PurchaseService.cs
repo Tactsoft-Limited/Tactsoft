@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Tactsoft.Core.Entities;
-using Tactsoft.Service.DbDependencies;
+using Tactsoft.Data.DbDependencies;
 using Tactsoft.Service.Services.Base;
 
 namespace Tactsoft.Service.Services

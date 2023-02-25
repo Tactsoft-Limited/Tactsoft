@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Tactsoft.Core.Identity;
+using Tactsoft.Data.DbDependencies;
 
 namespace Tactsoft.Service.DbDependencies
 {
