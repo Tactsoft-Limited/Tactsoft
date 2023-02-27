@@ -15,7 +15,7 @@ namespace Tactsoft.Service.Services
 
         public IEnumerable<SelectListItem> Dropdown()
         {
-            return All().Select(x => new SelectListItem { Text = x.Name, Value = x.Id.ToString() });
+            return All().Select(x => new SelectListItem { Text = x.CountryName, Value = x.Id.ToString() });
         }
     }
 }

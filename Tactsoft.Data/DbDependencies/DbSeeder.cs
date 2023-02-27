@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Tactsoft.Core.Defaults;
 using Tactsoft.Core.Entities;
 
 namespace Tactsoft.Data.DbDependencies
@@ -11,30 +12,30 @@ namespace Tactsoft.Data.DbDependencies
                 new Country
                 {
                     Id = 1,
-                    Name = "Bangladesh",
-                    Code = "BD",
-                    Currency = "BDT",
-                    Flag = "bd",
+                    CountryName = "Bangladesh",
+                    CountryCode = "BD",
+                    CountryCurrency = "BDT",
+                    CountryFlag = "bd",
                     CreatedBy = 1,
                     CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
                 },
                 new Country
                 {
                     Id = 2,
-                    Name = "United States",
-                    Code = "USA",
-                    Currency = "USD",
-                    Flag = "us",
+                    CountryName = "United States",
+                    CountryCode = "USA",
+                    CountryCurrency = "USD",
+                    CountryFlag = "us",
                     CreatedBy = 1,
                     CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
                 },
                 new Country
                 {
                     Id = 3,
-                    Name = "United Kingdom",
-                    Code = "UK",
-                    Currency = "GBP",
-                    Flag = "gb",
+                    CountryName = "United Kingdom",
+                    CountryCode = "UK",
+                    CountryCurrency = "GBP",
+                    CountryFlag = "gb",
                     CreatedBy = 1,
                     CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
                 });
@@ -44,7 +45,7 @@ namespace Tactsoft.Data.DbDependencies
             {
                 Id = 1,
                 CountryId = 1,
-                Name = "Dhaka",
+                StateName = "Dhaka",
                 CreatedBy = 1,
                 CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
             },
@@ -52,7 +53,7 @@ namespace Tactsoft.Data.DbDependencies
             {
                 Id = 2,
                 CountryId = 1,
-                Name = "Rajshahi",
+                StateName = "Rajshahi",
                 CreatedBy = 1,
                 CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
             },
@@ -60,7 +61,7 @@ namespace Tactsoft.Data.DbDependencies
             {
                 Id = 3,
                 CountryId = 2,
-                Name = "New York",
+                StateName = "New York",
                 CreatedBy = 1,
                 CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
             },
@@ -68,7 +69,7 @@ namespace Tactsoft.Data.DbDependencies
             {
                 Id = 4,
                 CountryId = 2,
-                Name = "Alabama",
+                StateName = "Alabama",
                 CreatedBy = 1,
                 CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
             });
@@ -78,56 +79,56 @@ namespace Tactsoft.Data.DbDependencies
             {
                 Id = 1,
                 StateId = 1,
-                Name = "Mohammadpur",
+                CityName = "Mohammadpur",
                 CreatedBy = 1,
                 CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
             }, new City
             {
                 Id = 2,
                 StateId = 1,
-                Name = "Dhanmondi",
+                CityName = "Dhanmondi",
                 CreatedBy = 1,
                 CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
             }, new City
             {
                 Id = 3,
                 StateId = 2,
-                Name = "Nator",
+                CityName = "Nator",
                 CreatedBy = 1,
                 CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
             }, new City
             {
                 Id = 4,
                 StateId = 2,
-                Name = "Sirajganj",
+                CityName = "Sirajganj",
                 CreatedBy = 1,
                 CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
             }, new City
             {
                 Id = 5,
                 StateId = 3,
-                Name = "New York City",
+                CityName = "New York City",
                 CreatedBy = 1,
                 CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
             }, new City
             {
                 Id = 6,
                 StateId = 3,
-                Name = "Buffalo",
+                CityName = "Buffalo",
                 CreatedBy = 1,
                 CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
             }, new City
             {
                 Id = 7,
                 StateId = 4,
-                Name = "Huntsville",
+                CityName = "Huntsville",
                 CreatedBy = 1,
                 CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
             }, new City
             {
                 Id = 8,
                 StateId = 4,
-                Name = "Montgomery",
+                CityName = "Montgomery",
                 CreatedBy = 1,
                 CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
             });
@@ -135,7 +136,7 @@ namespace Tactsoft.Data.DbDependencies
             new Employee
             {
                 Id = 1,
-                Name = "Hasan",
+                EmployeeName = "Hasan",
                 Gender="Male",
                 JoiningDate = DateTime.ParseExact("2020-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
@@ -143,7 +144,7 @@ namespace Tactsoft.Data.DbDependencies
                 Bsc = true,
                 Msc = true,
                 DepartmentId = 1,
-                Address = "Dhanmondi",
+                EmployeeAddress = "Dhanmondi",
                 Picture= "avatar2.png",
                 CountryId= 1,
                 StateId= 2,
@@ -153,14 +154,14 @@ namespace Tactsoft.Data.DbDependencies
             }, new Employee
             {
                 Id = 2,
-                Name = "Rubel",
+                EmployeeName = "Rubel",
                 Gender = "Male",
                 JoiningDate = DateTime.ParseExact("2020-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
                 Hsc = true,
                 Bsc = true,
                 Msc = true,
-                Address = "Dhanmondi",
+                EmployeeAddress = "Dhanmondi",
                 DepartmentId = 1,
                 Picture = "avatar2.png",
                 CountryId = 1,
@@ -171,7 +172,7 @@ namespace Tactsoft.Data.DbDependencies
             }, new Employee
             {
                 Id = 3,
-                Name = "Sobuj",
+                EmployeeName = "Sobuj",
                 Gender = "Male",
                 JoiningDate = DateTime.ParseExact("2020-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
@@ -179,7 +180,7 @@ namespace Tactsoft.Data.DbDependencies
                 Bsc = true,
                 Msc = true,
                 DepartmentId = 1,
-                Address = "Dhanmondi",
+                EmployeeAddress = "Dhanmondi",
                 Picture = "avatar5.png",
                 CountryId = 1,
                 StateId = 2,
@@ -189,14 +190,14 @@ namespace Tactsoft.Data.DbDependencies
             }, new Employee
             {
                 Id = 4,
-                Name = "Mamun",
+                EmployeeName = "Mamun",
                 Gender = "Male",
                 JoiningDate = DateTime.ParseExact("2020-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
                 Hsc = true,
                 Bsc = true,
                 Msc = true,
-                Address = "Dhanmondi",
+                EmployeeAddress = "Dhanmondi",
                 DepartmentId = 1,
                 Picture = "avatar4.png",
                 CountryId = 1,
@@ -207,14 +208,14 @@ namespace Tactsoft.Data.DbDependencies
             }, new Employee
             {
                 Id = 5,
-                Name = "Kalam",
+                EmployeeName = "Kalam",
                 Gender = "Male",
                 JoiningDate = DateTime.ParseExact("2020-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
                 Hsc = true,
                 Bsc = true,
                 Msc = true,
-                Address = "Dhanmondi",
+                EmployeeAddress = "Dhanmondi",
                 DepartmentId = 1,
                 Picture = "avatar2.png",
                 CountryId = 1,
@@ -225,14 +226,14 @@ namespace Tactsoft.Data.DbDependencies
             }, new Employee
             {
                 Id = 6,
-                Name = "Khurshed",
+                EmployeeName = "Khurshed",
                 Gender = "Male",
                 JoiningDate = DateTime.ParseExact("2020-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
                 Hsc = true,
                 Bsc = true,
                 Msc = true,
-                Address = "Dhanmondi",
+                EmployeeAddress = "Dhanmondi",
                 Picture = "avatar5.png",
                 CountryId = 1,
                 StateId = 2,
@@ -252,7 +253,7 @@ namespace Tactsoft.Data.DbDependencies
                 Ssc= true,
                 Hsc= true,
                 Bsc= true,
-                GenderId= Core.Gender.Male,
+                GenderId= Gender.Male,
                 Picture = "avatar.png",
                 Address ="Mohammadpur",
                 CountryId = 1,
@@ -270,7 +271,7 @@ namespace Tactsoft.Data.DbDependencies
                 Ssc = true,
                 Hsc = true,
                 Bsc = true,
-                GenderId = Core.Gender.Male,
+                GenderId = Gender.Male,
                 Picture = "avatar4.png",
                 Address = "Mohammadpur",
                 CountryId = 1,
@@ -288,7 +289,7 @@ namespace Tactsoft.Data.DbDependencies
                 Ssc = true,
                 Hsc = true,
                 Bsc = true,
-                GenderId = Core.Gender.Male,
+                GenderId = Gender.Male,
                 Picture = "avatar5.png",
                 Address = "Mohammadpur",
                 CountryId = 1,
@@ -306,7 +307,7 @@ namespace Tactsoft.Data.DbDependencies
                 Ssc = true,
                 Hsc = true,
                 Bsc = true,
-                GenderId = Core.Gender.Male,
+                GenderId = Gender.Male,
                 Picture = "avatar.png",
                 Address = "Mohammadpur",
                 CountryId = 1,
@@ -324,7 +325,7 @@ namespace Tactsoft.Data.DbDependencies
                 Ssc = true,
                 Hsc = true,
                 Bsc = true,
-                GenderId = Core.Gender.Male,
+                GenderId = Gender.Male,
                 Picture = "avatar4.png",
                 Address = "Mohammadpur",
                 CountryId = 1,
@@ -342,7 +343,7 @@ namespace Tactsoft.Data.DbDependencies
                 Ssc = true,
                 Hsc = true,
                 Bsc = true,
-                GenderId = Core.Gender.Male,
+                GenderId = Gender.Male,
                 Picture = "avatar4.png",
                 Address = "Mohammadpur",
                 CountryId = 1,

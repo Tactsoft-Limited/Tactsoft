@@ -1,0 +1,57 @@
+﻿@model Tactsoft.Core.Entities.Country
+
+<div class="card">
+    <form id="Country" asp-action="CreatePartial" asp-controller="Country">
+        <div class="card-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <div class="row mb-2">
+                        <label asp-for="CountryName" class="col-md-3 col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="CountryName" class="form-control" />
+                            <span asp-validation-for="CountryName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label asp-for="CountryCode" class="col-md-3 col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="CountryCode" class="form-control" />
+                            <span asp-validation-for="CountryCode" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label asp-for="CountryCurrency" class="col-md-3 col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="CountryCurrency" class="form-control" />
+                            <span asp-validation-for="CountryCurrency" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label asp-for="CountryFlag" class="col-md-3 col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="CountryFlag" class="form-control" />
+                            <span asp-validation-for="CountryFlag" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <div style="text-align:end">
+                <a class="btn btn-outline-danger btn-sm" onclick="$('#MediumModal').modal('hide');">
+                    <i class="far fa-window-close"></i> Cancel
+                </a>
+                <button type="button" value="Create" class="btn btn-outline-primary btn-sm" onclick="SubmitCountry();">
+                    <i class="far fa-save"></i> Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

@@ -1,4 +1,4 @@
-﻿namespace Tactsoft.Core.Messaging
+﻿namespace Tactsoft.Core.Defaults
 {
     public class CommonMessages
     {

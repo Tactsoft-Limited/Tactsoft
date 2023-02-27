@@ -1,4 +1,4 @@
-﻿namespace Tactsoft.Core.DataType
+﻿namespace Tactsoft.Core.Defaults
 {
     public static class DefaultData
     {

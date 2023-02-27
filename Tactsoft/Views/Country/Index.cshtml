@@ -38,16 +38,16 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name)
+                                    @Html.DisplayNameFor(model => model.CountryName)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Code)
+                                    @Html.DisplayNameFor(model => model.CountryCode)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Currency)
+                                    @Html.DisplayNameFor(model => model.CountryCurrency)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Flag)
+                                    @Html.DisplayNameFor(model => model.CountryFlag)
                                 </th>
                                 <th>Action</th>
                             </tr>
@@ -57,16 +57,16 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
+                                        @Html.DisplayFor(modelItem => item.CountryName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Code)
+                                        @Html.DisplayFor(modelItem => item.CountryCode)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Currency)
+                                        @Html.DisplayFor(modelItem => item.CountryCurrency)
                                     </td>
                                     <td>
-                                        <span style="font-size:20px; border:1px solid #808080" class="fi fi-@Html.DisplayFor(modelItem => item.Flag)"></span>
+                                        <span style="font-size:20px; border:1px solid #808080" class="fi fi-@Html.DisplayFor(modelItem => item.CountryFlag)"></span>
                                     </td>
                                     <td>
 

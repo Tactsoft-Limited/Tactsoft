@@ -1,13 +1,15 @@
 ﻿using Tactsoft.Core.Base;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Tactsoft.Core.Entities
 {
     public class City:BaseEntity
     {
         [Required]
-        public string Name { get; set; }
+        [Display(Name = "Name")]
+        public string CityName { get; set; }
         [Required]
         [Display(Name = "State")]
         public long StateId { get; set; }

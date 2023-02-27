@@ -1,0 +1,43 @@
+﻿@model Tactsoft.Core.Entities.State
+
+<div class="card">
+    <form id="State" asp-action="CreatePartial" asp-controller="State">
+        <div class="card-body">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <div class="row mb-2">
+                        <label asp-for="StateName" class="col-md-3 col-form-label"></label>
+                        <div class="col-md-9">
+                            <input asp-for="StateName" class="form-control" />
+                            <span asp-validation-for="StateName" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label asp-for="CountryId" class="col-md-3 col-form-label"></label>
+                        <div class="col-md-9">
+                            <select asp-for="CountryId" class="form-control" asp-items="@(ViewBag.CountryId)"></select>
+                            <span asp-validation-for="CountryId" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+            <div style="text-align:end">
+                <a class="btn btn-outline-danger btn-sm" onclick="$('#MediumModal').modal('hide');">
+                    <i class="far fa-window-close"></i> Cancel
+                </a>
+                <button type="button" value="Create" class="btn btn-outline-primary btn-sm" onclick="SubmitState();">
+                    <i class="far fa-save"></i> Save
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>

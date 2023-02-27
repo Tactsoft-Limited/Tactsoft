@@ -6,16 +6,20 @@ namespace Tactsoft.Core.Entities
     public class Country:BaseEntity
     {
         [Required]
-        public string Name { get; set; }
+        [Display(Name = "Name")]
+        public string CountryName { get; set; }
 
         [Required]
-        public string Code { get; set; }
+        [Display(Name = "Code")]
+        public string CountryCode { get; set; }
 
         [Required]
-        public string Currency { get; set; }
+        [Display(Name = "Currency")]
+        public string CountryCurrency { get; set; }
 
         [Required]
-        public string Flag { get; set; }
+        [Display(Name = "Flage")]
+        public string CountryFlag { get; set; }
 
 
         public IList<State> States { get; set; }

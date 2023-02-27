@@ -1,4 +1,4 @@
-﻿namespace Tactsoft.Core
+﻿namespace Tactsoft.Core.Defaults
 {
     public class CommonVariables
     {

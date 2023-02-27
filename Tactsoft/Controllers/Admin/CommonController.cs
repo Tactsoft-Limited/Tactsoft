@@ -38,10 +38,10 @@ namespace Tactsoft.Controllers.Admin
 
         public JsonResult GetRandomNumber( int departmentId)
         {
-            string date = DateTime.Now.ToString("yyyy");
+            string date = DateTime.Now.ToString("yy");
             string lastIdNumber = (from n in _context.Employees
                                    where n.DepartmentId == departmentId
-                                   orderby n.Id descending
+                                   orderby n.Id descending 
                                    select n.IdNumber).FirstOrDefault();
 
             if(lastIdNumber != null)
@@ -62,6 +62,12 @@ namespace Tactsoft.Controllers.Admin
             }
 
         }
+
+        public JsonResult GetCountry()
+        {
+            return Json(_context.Countries.ToList());
+        }
+        
 
     }
 }

@@ -127,8 +127,8 @@ namespace Tactsoft.Controllers.Admin
                         employee.Picture = emp.Picture;
                     }
                     emp.Picture = employee.Picture;
-                    emp.Name = employee.Name;
-                    emp.Address = employee.Address;
+                    emp.EmployeeName = employee.EmployeeName;
+                    emp.EmployeeAddress = employee.EmployeeAddress;
                     emp.Gender = employee.Gender;
                     emp.Ssc = employee.Ssc;
                     emp.Hsc = employee.Hsc;

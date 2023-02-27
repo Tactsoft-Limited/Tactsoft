@@ -1,12 +1,13 @@
 ﻿using System.Linq.Expressions;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Tactsoft.Core.Defaults;
 
 namespace Tactsoft.Core.Collections
 {
     public static class PagingExtention
     {
-        public static async Task<Paging<T>> PagingAsync<T>(this IQueryable<T> query, int pageIndex = 0, int pageSize = 10)
+        public static async Task<Paging<T>> PagingAsync<T>(this IQueryable<T> query, int pageIndex = CommonVariables.pageIndex, int pageSize = CommonVariables.pageSize)
         {
             var total = await query.CountAsync(); ;
             int skip = Math.Max(pageSize * pageIndex, 0);
@@ -19,9 +20,9 @@ namespace Tactsoft.Core.Collections
             return new Paging<T>(pageIndex, pageSize, list, total);
         }
 
-        public static Paging<T> Paging<T>(this IQueryable<T> query, int pageIndex = 0, int pageSize = 10)
+        public static Paging<T> Paging<T>(this IQueryable<T> query, int pageIndex = CommonVariables.pageIndex, int pageSize = CommonVariables.pageSize)
         {
-            var total = query.Count(); ;
+            var total = query.Count();
             int skip = Math.Max(pageSize * pageIndex, 0);
 
             List<T> list = query.Skip(skip).Take(pageSize).ToList();

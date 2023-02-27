@@ -1,5 +1,9 @@
-﻿namespace Tactsoft.Core
+﻿namespace Tactsoft.Core.Defaults
 {
+    public class GlobalEnum
+    {
+       
+    }
     public enum Gender
     {
         Male = 1,

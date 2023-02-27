@@ -19,20 +19,8 @@ namespace Tactsoft.Controllers.Admin
         public async Task<IActionResult> Index()
         {
             var states = await _stateService.GetAllAsync(x => x.Country);
-            ViewData["CountryId"] = _countryService.Dropdown();
             return View(states);
         }
-
-        [HttpPost]
-        public async Task<IActionResult> Index(IFormCollection fc)
-        {
-            int countryId = Convert.ToInt32(fc["CountryId"]);
-            List<State> states = await _stateService.GetAllAsync(x=>x.CountryId== countryId, x=>x.Country);
-            ViewData["CountryId"] = _countryService.Dropdown();
-            return View(states);
-        }
-
-
 
         // GET: StateController/Details/5
         public ActionResult Details(int id)
@@ -103,28 +91,22 @@ namespace Tactsoft.Controllers.Admin
             }
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> LoadData(int? country)
-        //{
-        //    var draw = Request.Form["draw"].FirstOrDefault();
-        //    var start = Request.Form["start"].FirstOrDefault();
-        //    var length = Request.Form["length"].FirstOrDefault();
-        //    var sortColumn = Request.Form["columns[" + Request.Form["order[0][column]"].FirstOrDefault() + "][name]"].FirstOrDefault();
-        //    var sortColumnDirection = Request.Form["order[0][dir]"].FirstOrDefault();
-        //    var searchValue = Request.Form["search[value]"].FirstOrDefault();
-        //    int pageSize = length != null ? Convert.ToInt32(length) : 0;
-        //    int skip = start != null ? Convert.ToInt32(start) : 0;
-        //    int recordsTotal = 0;
-        //    List<State> stateData = await _stateService.GetAllAsync();
-        //    if (!string.IsNullOrEmpty(searchValue))
-        //    {
-        //        stateData = stateData.Where(m => m.Name.Contains(searchValue)
-        //                                    || m.Country.Name.Contains(searchValue)).ToList();
-        //    }
-        //    recordsTotal = stateData.Count();
-        //    var data = stateData.Skip(skip).Take(pageSize).ToList();
-        //    var jsonData = new { draw = draw, recordsFiltered = recordsTotal, recordsTotal = recordsTotal, data = data };
-        //    return Json(jsonData);
-        //}
+        // GET: CountryController/Create
+        public IActionResult CreatePartial()
+        {
+            State state = new  State();
+            ViewData["CountryId"] = _countryService.Dropdown();
+            return PartialView("_CreatePartial", state);
+        }
+
+        // POST: CountryController/Create
+        [HttpPost]
+        public async Task<JsonResult> CreatePartial([FromBody] State state)
+        {
+            return Json(await _stateService.InsertAsync(state));
+
+        }
+
+        
     }
 }

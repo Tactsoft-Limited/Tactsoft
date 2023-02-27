@@ -44,7 +44,7 @@
                                     @Html.DisplayNameFor(model => model.IdNumber)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name)
+                                    @Html.DisplayNameFor(model => model.EmployeeName)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Gender)
@@ -82,7 +82,7 @@
                                         @Html.DisplayFor(modelItem => item.IdNumber)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
+                                        @Html.DisplayFor(modelItem => item.EmployeeName)
                                     </td>
 
                                     <td>
@@ -105,13 +105,13 @@
                                         @Html.DisplayFor(modelItem => item.Department.DepartmentName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Country.Name)
+                                        @Html.DisplayFor(modelItem => item.Country.CountryName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.State.Name)
+                                        @Html.DisplayFor(modelItem => item.State.StateName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.City.Name)
+                                        @Html.DisplayFor(modelItem => item.City.CityName)
                                     </td>
                                     <td style="width:60px;text-align:center">
                                         @Html.ActionLink("", "Edit", new { id = item.Id }, new { @class = "fa-regular fa-pen-to-square", @style = "color:green" }) |

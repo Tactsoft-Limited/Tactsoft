@@ -1,13 +1,14 @@
 ﻿using Tactsoft.Core.Base;
 using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
 
 namespace Tactsoft.Core.Entities
 {
     
     public class State:BaseEntity
-    {        
-        public string Name { get; set; }
+    {
+        [Display(Name = "Name")]
+        [Required]
+        public string StateName { get; set; }
 
         [Display(Name= "Country")]
         public long CountryId { get; set; }

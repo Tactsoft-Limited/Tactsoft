@@ -29,10 +29,7 @@
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
                         <h3 class="card-title">@ViewData["Title"] List</h3>
-                        @*<a class="btn btn-outline-primary btn-sm" asp-action="Create">
-                                <i class="fa-regular fa-pen-to-square"></i> Add New
-                            </a>*@
-                        <a class="btn btn-outline-primary btn-sm" onclick="AddCountry()">
+                        <a class="btn btn-outline-primary btn-sm" asp-action="Create">
                             <i class="fa-regular fa-pen-to-square"></i> Add New
                         </a>
                     </div>
@@ -42,7 +39,7 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name)
+                                    @Html.DisplayNameFor(model => model.CityName)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.StateId)
@@ -55,10 +52,10 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
+                                        @Html.DisplayFor(modelItem => item.CityName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.State.Name)
+                                        @Html.DisplayFor(modelItem => item.State.StateName)
                                     </td>
                                     <td>
 

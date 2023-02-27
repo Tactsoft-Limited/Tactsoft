@@ -5,13 +5,21 @@ namespace Tactsoft.Core.Entities
 {
     public class Supplier:BaseEntity
     {
-        public string Name { get; set; }
+        [Required]
+        [Display(Name = "Name")]
+        public string SupplierName { get; set; }
 
+        [Required]
         [Display(Name= "Contact Person")]
         public string ContactPerson { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string Address { get; set; }
+        [Required]
+        [Display(Name = "Email")]
+        public string SupplierEmail { get; set; }
+        [Required]
+        [Display(Name = "Phone")]
+        public string SupplierPhone { get; set; }
+        [Display(Name = "Address")]
+        public string SupplierAddress { get; set; }
         [Display(Name = "Country")]
         public long CountryId { get; set; }
         [Display(Name = "State")]

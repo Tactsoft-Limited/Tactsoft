@@ -1,6 +1,6 @@
 ﻿using Tactsoft.Core.Base;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace Tactsoft.Core.Entities
 {
@@ -10,10 +10,12 @@ namespace Tactsoft.Core.Entities
         public string IdNumber { get; set; }
 
         [Required]
-        public string Name { get; set; }
+        [Display(Name = "Name")]
+        public string EmployeeName { get; set; }
 
         [Required]
-        public string Address { get; set; }
+        [Display(Name = "Address")]
+        public string EmployeeAddress { get; set; }
 
         [Required]
         public string Gender { get; set; }

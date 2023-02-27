@@ -1,47 +1,5 @@
 ﻿$(document).ready(function () {
 
-    //// Get States by Country ID
-    //$('#CountryId').change(function () {
-    //    $.ajax({
-    //        type: "get",
-    //        url: "/Common/GetStatesByCountryId",
-    //        data: { countryId: $('#CountryId').val() },
-    //        datatype: "json",
-    //        traditional: true,
-    //        success: function (data) {
-    //            var state = "<select id='StateId'>";
-    //            state = state + '<option value="">Select State</option>';
-    //            for (var i = 0; i < data.length; i++) {
-    //                state = state + '<option value=' + data[i].id + '>' + data[i].name + '</option>';
-    //            }
-    //            state = state + '</select>';
-    //            $('#StateId').html(state);
-    //        }
-    //    });
-    //});
-
-    //// Get Cities by State ID
-    //$('#StateId').change(function () {
-    //    $.ajax({
-    //        type: "get",
-    //        url: "/Common/GetCitiesByStateId",
-    //        data: { stateId: $('#StateId').val() },
-    //        datatype: "json",
-    //        traditional: true,
-    //        success: function (data) {
-    //            var city = "<select id='CityId'>";
-    //            city = city + '<option value="">Select City</option>';
-    //            for (var i = 0; i < data.length; i++) {
-    //                city = city + '<option value=' + data[i].id + '>' + data[i].name + '</option>';
-    //            }
-    //            city = city + '</select>';
-    //            $('#CityId').html(city);
-    //        }
-    //    });
-    //});
-
-    // Dropdown
-
     $('body').on('change', '#CountryId', function () {
         var CountryId = $(this).val();
         LoadState(CountryId);
@@ -76,6 +34,25 @@
 
 });
 
+
+function LoadCountry() {
+    $.ajax({
+        type: "get",
+        url: "/Common/GetCountry",
+        datatype: "json",
+        traditional: true,
+        success: function (data) {
+            var country = "<select id='CountryId'>";
+            country = country + '<option value="">Select Country</option>';
+            for (var i = 0; i < data.length; i++) {
+                country = country + '<option value=' + data[i].id + '>' + data[i].countryName + '</option>';
+            }
+            country = country + '</select>';
+            $('#CountryId').html(country);
+        }
+    });
+}
+
 function LoadState(CountryId) {
     var $state = $('#StateId');
     $.ajax({
@@ -88,7 +65,7 @@ function LoadState(CountryId) {
             var state = "<select id='StateId'>";
             state = state + '<option value="">Select State</option>';
             for (var i = 0; i < data.length; i++) {
-                state = state + '<option value=' + data[i].id + '>' + data[i].name + '</option>';
+                state = state + '<option value=' + data[i].id + '>' + data[i].stateName + '</option>';
             }
             state = state + '</select>';
             $('#StateId').html(state);
@@ -108,10 +85,11 @@ function LoadCity(StateId) {
             var city = "<select id='CityId'>";
             city = city + '<option value="">Select City</option>';
             for (var i = 0; i < data.length; i++) {
-                city = city + '<option value=' + data[i].id + '>' + data[i].name + '</option>';
+                city = city + '<option value=' + data[i].id + '>' + data[i].cityName + '</option>';
             }
             city = city + '</select>';
             $('#CityId').html(city);
         }
     });
 }
+

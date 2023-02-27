@@ -3,6 +3,7 @@ using Tactsoft.Service.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 
 namespace Tactsoft.Controllers.Admin
 {
@@ -104,6 +105,21 @@ namespace Tactsoft.Controllers.Admin
             {
                 return View();
             }
+        }
+
+        // GET: CountryController/Create
+        public IActionResult CreatePartial()
+        {
+            Country country = new Country();
+            return PartialView("_CreatePartial", country);
+        }
+
+        // POST: CountryController/Create
+        [HttpPost]
+        public async Task<JsonResult> CreatePartial([FromBody] Country country)
+        {
+            return Json(await _countryService.InsertAsync(country));
+            
         }
     }
 }

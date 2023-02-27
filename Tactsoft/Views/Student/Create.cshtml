@@ -31,7 +31,7 @@
                         <label asp-for="GenderId" class="col-md-3 col-form-label"></label>
                         <div class="col-md-9 pt-2">
 
-                            @foreach (var gender in Enum.GetValues(typeof(Tactsoft.Core.Gender)).Cast<Tactsoft.Core.Gender>())
+                            @foreach (var gender in Enum.GetValues(typeof(Tactsoft.Core.Defaults.Gender)).Cast<Tactsoft.Core.Defaults.Gender>())
                             {
                                 <div class="form-check form-check-inline">
                                     <input type="radio" id="@gender" class="form-check-input" asp-for="GenderId" value="@gender" />

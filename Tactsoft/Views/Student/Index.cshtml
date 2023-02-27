@@ -96,13 +96,13 @@
                                         @Html.DisplayFor(modelItem => item.GenderId)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Country.Name)
+                                        @Html.DisplayFor(modelItem => item.Country.CountryName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.State.Name)
+                                        @Html.DisplayFor(modelItem => item.State.StateName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.City.Name)
+                                        @Html.DisplayFor(modelItem => item.City.CityName)
                                     </td>
                                     <td class="text-center" style="width:90px">
                                         <a href="javascript:EditStudent(@item.Id)">

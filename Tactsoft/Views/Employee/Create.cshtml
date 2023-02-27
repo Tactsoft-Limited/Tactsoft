@@ -32,16 +32,16 @@
                         <div class="row mt-2">
                             <div class="col-md-6">
                                 <div class="row mb-2">
-                                    <label asp-for="Name" class="col-md-3 col-form-label"></label>
+                                    <label asp-for="EmployeeName" class="col-md-3 col-form-label"></label>
                                     <div class="col-md-9">
-                                        <input asp-for="Name" class="form-control" />
-                                        <span asp-validation-for="Name" class="text-danger"></span>
+                                        <input asp-for="EmployeeName" class="form-control" />
+                                        <span asp-validation-for="EmployeeName" class="text-danger"></span>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
                                     <label asp-for="IdNumber" class="col-md-3 col-form-label"></label>
                                     <div class="col-md-9">
-                                        <input asp-for="IdNumber" class="form-control" readonly/>
+                                        <input asp-for="IdNumber" class="form-control" readonly />
                                         <span asp-validation-for="IdNumber" class="text-danger"></span>
                                     </div>
                                 </div>
@@ -107,10 +107,10 @@
                                     </div>
                                 </div>
                                 <div class="row mb-2">
-                                    <label asp-for="Address" class="col-md-3 col-form-label"></label>
+                                    <label asp-for="EmployeeAddress" class="col-md-3 col-form-label"></label>
                                     <div class="col-md-9">
-                                        <textarea rows="4" asp-for="Address" class="form-control"></textarea>
-                                        <span asp-validation-for="Address" class="text-danger"></span>
+                                        <textarea rows="4" asp-for="EmployeeAddress" class="form-control"></textarea>
+                                        <span asp-validation-for="EmployeeAddress" class="text-danger"></span>
                                     </div>
                                 </div>
 
@@ -118,30 +118,45 @@
                             <div class="col-md-6">
                                 <div class="row mb-2">
                                     <label asp-for="CountryId" class="col-md-3 col-form-label"></label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-8">
                                         <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId">
                                             <option value="">Select Country</option>
                                         </select>
                                         <span asp-validation-for="CountryId" class="text-danger"></span>
                                     </div>
+                                    <label style="font-size: 15pt; padding: 2px 0px;" asp-for="CountryId" class="col-md-1 col-form-label">
+                                        <a href="javascript:AddCountry()">
+                                            <i class="fa fa-plus-square"></i>
+                                        </a>
+                                    </label>
                                 </div>
                                 <div class="row mb-2">
                                     <label asp-for="StateId" class="col-md-3 col-form-label"></label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-8">
                                         <select asp-for="StateId" asp-items="@(ViewBag.StateId)" class="form-control">
                                             <option value="">Select State</option>
                                         </select>
                                         <span asp-validation-for="StateId" class="text-danger"></span>
                                     </div>
+                                    <label style="font-size: 15pt; padding: 2px 0px;" asp-for="CountryId" class="col-md-1 col-form-label">
+                                        <a href="javascript:AddState()">
+                                            <i class="fa fa-plus-square"></i>
+                                        </a>
+                                    </label>
                                 </div>
                                 <div class="row mb-2">
                                     <label asp-for="CityId" class="col-md-3 col-form-label"></label>
-                                    <div class="col-md-9">
+                                    <div class="col-md-8">
                                         <select asp-for="CityId" asp-items="@(ViewBag.CityId)" class="form-control">
                                             <option value="">Select City</option>
                                         </select>
                                         <span asp-validation-for="CityId" class="text-danger"></span>
                                     </div>
+                                    <label style="font-size: 15pt; padding: 2px 0px;" asp-for="CountryId" class="col-md-1 col-form-label">
+                                        <a href="javascript:AddCity()">
+                                            <i class="fa fa-plus-square"></i>
+                                        </a>
+                                    </label>
                                 </div>
                                 <div class="row mb-2">
                                     <label asp-for="Picture" class="col-md-3 col-form-label"></label>
@@ -173,25 +188,28 @@
     </section>
 </div>
 
+<partial name="~/Views/UIComponents/_MediumModal.cshtml" />
+
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
-<script>
+    <script src="~/admin-lte/js/commonCRUD.js"></script>
 
-    $('#DepartmentId').change(function () {
+    <script>
 
-        $.ajax({
-            url: "/Common/GetRandomNumber",
-            data: { departmentId: $('#DepartmentId').val() },
-            datatype: "json",
-            traditional: true,
-            success: function (data) {
-                //console.log(data)
-                $('#IdNumber').attr('Value',data);
-            }
+        $('#DepartmentId').change(function () {
+            $.ajax({
+                url: "/Common/GetRandomNumber",
+                data: { departmentId: $('#DepartmentId').val() },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    //console.log(data)
+                    $('#IdNumber').attr('Value', data);
+                }
+            });
         });
-    });
 
-</script>
+    </script>
 
 }

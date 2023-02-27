@@ -5,13 +5,6 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<style>
-    select.form-control {
-        display: inline;
-        width: 200px;
-        margin-left: 25px;
-    }
-</style>
 
 <div class="content-wrapper">
     <div class="content-header">
@@ -42,21 +35,12 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form method="post" asp-action="Index" asp-controller="State">
-                        <div class="country-filter">
-                            <select class="form-control" id="CountryId" name="CountryId" asp-items="ViewBag.CountryId" onchange="this.form.submit()">
-                                <option value="">Select Country</option>
-                            </select>
-                            
-                        </div>
-                        
-                    </form>
-                   
+
                     <table class="table" id="stateTable">
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.Name)
+                                    @Html.DisplayNameFor(model => model.StateName)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.CountryId)
@@ -69,10 +53,10 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Name)
+                                        @Html.DisplayFor(modelItem => item.StateName)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.Country.Name)
+                                        @Html.DisplayFor(modelItem => item.Country.CountryName)
                                     </td>
                                     <td style="width:60px;text-align:center">
                                         @Html.ActionLink("", "Edit", new { id = item.Id }, new { @class = "fa-regular fa-pen-to-square", @style = "color:green" }) |
@@ -90,52 +74,3 @@
     </section>
 </div>
 
-
-
-@*@section Scripts{
-    <script>
-        $("document").ready(function () {
-            $('#stateTable').DataTable({
-                "processing": true,
-                "serverSide": true,
-                "searching": true,
-                "ajax": {
-                    "url": "/State/LoadData",
-                    "type": "POST",
-                    "datatype": "json"
-                },
-                "columns": [
-                    { "data": "name", "name": "Name", "autoWidth": true },
-                    { "data": "countryId", "name": "CountryId", "autoWidth": true },
-                ]
-            });  
-
-            var table = $('#stateTable').DataTable();
-
-            $("#stateTable_filter.dataTables_filter").append($("#CountryId"));
-
-            var countryIndex = 0;
-            $("#stateTable th").each(function (i) {
-                if ($($(this)).html() == "countryId") {
-                    countryIndex = i; return false;
-                }
-            });
-
-            $.fn.dataTable.ext.search.push(
-                function (settings, data, dataIndex) {
-                    var selectedItem = $('#CountryId').val()
-                    var country = data[countryIndex];
-                    if (selectedItem === "" || country.includes(selectedItem)) {
-                        return true;
-                    }
-                    return false;
-                }
-            );
-            $("#CountryId").change(function (e) {
-                table.draw();
-            });
-            table.draw();
-
-        });
-    </script>*@
-}
