@@ -1,4 +1,6 @@
-﻿namespace Tactsoft.Core.Defaults
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace Tactsoft.Core.Defaults
 {
     public class GlobalEnum
     {
@@ -38,4 +40,10 @@
         Sms = 2,
         Email = 3
     }
+
+    public enum Month 
+    {
+        January = 1, February, March, April, May, June, July, August, September, October, November, December
+    }
+
 }

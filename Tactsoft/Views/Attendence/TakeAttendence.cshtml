@@ -1,0 +1,74 @@
+﻿@model Tactsoft.Core.ViewModel.AttendenceModel
+
+@{
+    ViewData["Title"] = "Take Attendence";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="m-0">@ViewData["Title"]</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Employee Attendence</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" asp-controller="Attendence" asp-action="TakeAttendence">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-body">
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label asp-for="DepartmentId"></label>
+                                                    <select class="form-control form-control-sm" asp-for="DepartmentId" asp-items="@(ViewBag.DepartmentId)">
+                                                        <option value="">Select Department</option>
+                                                        <option value="0">All Employee</option>
+                                                    </select>
+                                                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="AttendenceDate">Attendence Date </label>
+                                                    <input type="date" class="form-control form-control-sm" asp-for="AttendenceDate" />
+                                                    <span asp-validation-for="AttendenceDate" class="text-danger"></span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <br />
+                                                <input class="btn btn-primary margin-10" type="submit" value="Search Employee" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

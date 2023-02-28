@@ -19,7 +19,7 @@ namespace Tactsoft.Service.Dependency
             services.AddScoped<IItemService, ItemService>();
             services.AddScoped<ISupplierService, SupplierService>();
             services.AddScoped<IPurchaseService, PurchaseService>();
-
+            services.AddScoped<IAttendanceService, AttendanceService>();
 
         }
     }

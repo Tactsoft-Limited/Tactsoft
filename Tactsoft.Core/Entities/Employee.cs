@@ -55,5 +55,7 @@ namespace Tactsoft.Core.Entities
         public City City { get; set; }
 
         public Department Department { get; set; }
+
+        public ICollection<Attendance> Attendances { get; set; }
     }
 }

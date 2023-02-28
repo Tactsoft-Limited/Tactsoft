@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tactsoft.Data.DbDependencies;
 
@@ -11,9 +12,10 @@ using Tactsoft.Data.DbDependencies;
 namespace Tactsoft.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230227081607_AddAttendenceTable")]
+    partial class AddAttendenceTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +24,7 @@ namespace Tactsoft.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("Tactsoft.Core.Entities.Attendance", b =>
+            modelBuilder.Entity("Tactsoft.Core.Entities.Aattendance", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -55,7 +57,7 @@ namespace Tactsoft.Data.Migrations
 
                     b.HasIndex("EmployeeId");
 
-                    b.ToTable("Attendances");
+                    b.ToTable("Aattendance");
                 });
 
             modelBuilder.Entity("Tactsoft.Core.Entities.City", b =>
@@ -947,10 +949,10 @@ namespace Tactsoft.Data.Migrations
                     b.ToTable("Suppliers");
                 });
 
-            modelBuilder.Entity("Tactsoft.Core.Entities.Attendance", b =>
+            modelBuilder.Entity("Tactsoft.Core.Entities.Aattendance", b =>
                 {
                     b.HasOne("Tactsoft.Core.Entities.Employee", "Employee")
-                        .WithMany("Attendances")
+                        .WithMany("Aattendances")
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -1121,7 +1123,7 @@ namespace Tactsoft.Data.Migrations
 
             modelBuilder.Entity("Tactsoft.Core.Entities.Employee", b =>
                 {
-                    b.Navigation("Attendances");
+                    b.Navigation("Aattendances");
                 });
 
             modelBuilder.Entity("Tactsoft.Core.Entities.Item", b =>
