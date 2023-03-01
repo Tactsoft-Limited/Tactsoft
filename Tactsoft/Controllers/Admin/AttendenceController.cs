@@ -85,7 +85,7 @@ namespace Tactsoft.Controllers.Admin
         public ActionResult TakeAttendence()
         {
             ViewData["DepartmentId"] = _departmentService.Dropdown();
-            return View();
+            return View(new AttendenceModel());
         }
 
         // POST: CityController/TakeAttendence
@@ -104,26 +104,58 @@ namespace Tactsoft.Controllers.Admin
                 {
                     attendenceModel.AttendenceList.Add(new AttendenceList
                     {
-                        EmployeeId = (int)item.EmployeeId,
-                        AttendenceId = (int)item.Id,
+                        EmployeeId = item.EmployeeId,
+                        AttendenceId = item.Id,
                         IsPresent = item.IsPresent,
-                        Name = _employeeService.NameById((int)item.EmployeeId)
+                        Name = _employeeService.NameById(item.EmployeeId)
                     });
                 }
                 return View(attendenceModel);
             }
+
             var employees = _employeeService.AllByDepartmentId(model.DepartmentId);
             if (employees != null)
             {
                 foreach (var item in employees)
                 {
-                    attendenceModel.AttendenceList.Add(new AttendenceList { EmployeeId = (int)item.Id, Name = item.EmployeeName });
+                    attendenceModel.AttendenceList.Add(new AttendenceList { EmployeeId = item.Id, Name = item.EmployeeName });
                 }
                 return View(attendenceModel);
             }
             return View(model);
         }
 
-        
+        [HttpPost]
+        public async Task<IActionResult> SaveAttendence(AttendenceModel model)
+        {
+            if (model.AttendenceList.Count() > 0)
+            {
+                foreach (var item in model.AttendenceList)
+                {
+                    if (item.AttendenceId == 0)
+                    {
+                        //save 
+                        await _attendanceService.InsertAsync(new Attendence
+                        {
+                            AttendenceDate = model.AttendenceDate,
+                            EmployeeId = item.EmployeeId,
+                            IsPresent = item.IsPresent });
+                    }
+                    else
+                    {
+                        // update 
+                        var existingAttendence = await _attendanceService.FindAsync(item.AttendenceId);
+                        if (existingAttendence != null)
+                        {
+                            existingAttendence.IsPresent = item.IsPresent;
+                            existingAttendence.EmployeeId = item.EmployeeId;
+                            await _attendanceService.UpdateAsync(existingAttendence.Id, existingAttendence);
+                        }
+                    }
+                }
+            }
+            return RedirectToAction("TakeAttendence");
+        }
+
     }
 }

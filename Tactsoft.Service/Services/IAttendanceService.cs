@@ -8,7 +8,8 @@ using Tactsoft.Service.Services.Base;
 
 namespace Tactsoft.Service.Services
 {
-    public interface IAttendanceService:IBaseService<Attendance>
+    public interface IAttendanceService : IBaseService<Attendence>
     {
+       
     }
 }

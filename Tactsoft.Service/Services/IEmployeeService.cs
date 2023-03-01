@@ -8,6 +8,6 @@ namespace Tactsoft.Service.Services
     {
         IEnumerable<Employee> AllByDepartmentId(int deptId);
         IEnumerable<SelectListItem> GetAllEmployeeForDropDown();
-        string NameById(int id);
+        string NameById(long id);
     }
 }

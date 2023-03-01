@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Take Attendence";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int i = 0;
 }
 
 <div class="content-wrapper">
@@ -30,45 +31,79 @@
                 <div class="card-body">
                     <form method="post" asp-controller="Attendence" asp-action="TakeAttendence">
                         <div class="row">
-                            <div class="col-md-12">
-                                <div class="card">
-                                    <div class="card-body">
-
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label asp-for="DepartmentId"></label>
-                                                    <select class="form-control form-control-sm" asp-for="DepartmentId" asp-items="@(ViewBag.DepartmentId)">
-                                                        <option value="">Select Department</option>
-                                                        <option value="0">All Employee</option>
-                                                    </select>
-                                                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="AttendenceDate">Attendence Date </label>
-                                                    <input type="date" class="form-control form-control-sm" asp-for="AttendenceDate" />
-                                                    <span asp-validation-for="AttendenceDate" class="text-danger"></span>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <br />
-                                                <input class="btn btn-primary margin-10" type="submit" value="Search Employee" />
-                                            </div>
-                                        </div>
-
-                                    </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="DepartmentId"></label>
+                                    <select class="form-control form-control-sm" asp-for="DepartmentId" asp-items="@(ViewBag.DepartmentId)">
+                                        <option value="">Select Department</option>
+                                        <option value="0">All Employee</option>
+                                    </select>
+                                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
                                 </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label asp-for="AttendenceDate"></label>
+                                    <input type="date" class="form-control form-control-sm" asp-for="AttendenceDate" min="@(DateTime.Now.ToString("yyyy-MM-dd"))" max="@(DateTime.Now.ToString("yyyy-MM-dd"))"/>
+                                    <span asp-validation-for="AttendenceDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <br />
+                                <input class="btn btn-primary mt-2 btn-sm" type="submit" value="Search Employee" />
                             </div>
                         </div>
                     </form>
-                </div>
-                <div class="card-footer">
+
+                    @if (Model.AttendenceList != null)
+                    {
+                        <form method="post" action="SaveAttendence">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Employeee</th>
+                                        <th>
+                                            IsPresent
+                                            <input type="checkbox" id="checkAll" value="Check All" />
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.AttendenceList)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @item.Name
+                                                <input type="hidden" name="AttendenceList[@i].AttendenceId" value="@item.AttendenceId" />
+                                                <input type="hidden" name="AttendenceList[@i].EmployeeId" value="@item.EmployeeId" />
+                                                <input type="hidden" asp-for="AttendenceDate" />
+                                                <input type="hidden" asp-for="DepartmentId" />
+
+                                            </td>
+                                            <td>
+                                                <input asp-for="@item.IsPresent" type="checkbox" name="AttendenceList[@i].IsPresent" />
+                                            </td>
+                                        </tr>
+                                        i++;
+                                    }
+                                </tbody>
+                            </table>
+                            <div class="col-md-offset-3 col-md-4">
+                                <button type="submit" class="btn btn-success btn-sm"> Save Changes</button>
+                            </div>
+                        </form>
+                    }
 
                 </div>
             </div>
         </div>
     </section>
 </div>
+
+@section Scripts{
+    <script>
+        $("#checkAll").click(function () {
+            $('input:checkbox').not(this).prop('checked', this.checked);
+        });
+    </script>
+}

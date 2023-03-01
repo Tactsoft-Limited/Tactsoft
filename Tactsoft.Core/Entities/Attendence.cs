@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Tactsoft.Core.Entities
 {
-    public class Attendance:BaseEntity
+    public class Attendence:BaseEntity
     {
         [Required]
         [DisplayName("Attendence Date")]

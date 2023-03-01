@@ -9,7 +9,7 @@ using Tactsoft.Service.Services.Base;
 
 namespace Tactsoft.Service.Services
 {
-    public class AttendanceService : BaseService<Attendance>, IAttendanceService
+    public class AttendanceService : BaseService<Attendence>, IAttendanceService
     {
         private readonly AppDbContext _context;
 

@@ -106,23 +106,16 @@ namespace Tactsoft.Service.Services.Base
                 c => c.AsNoTracking().FirstOrDefaultAsync(predicate)
             ).ConfigureAwait(false);
         }
-
-
-
-
-
-
-
         public async Task<T> UpdateAsync(long id, T entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            T exist = _context.Set<T>().Find(id);
+            T exist = await _context.Set<T>().FindAsync(id);
             if (exist != null)
             {
-                _context.Entry(exist).CurrentValues.SetValues(entity);
+                _context.Entry(entity).State = EntityState.Modified;
                await _context.SaveChangesAsync();
             }
             await _context.SaveChangesAsync();

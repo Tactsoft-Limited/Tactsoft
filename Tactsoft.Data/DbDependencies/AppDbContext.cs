@@ -26,8 +26,7 @@ namespace Tactsoft.Data.DbDependencies
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Purchase> Purchases { get; set; }
         public DbSet<PurchaseItem> PurchaseItems { get; set; }
-        
-        public DbSet<Attendance> Attendances { get; set; }
+        public DbSet<Attendence> Attendences { get; set; }
 
 
         #endregion

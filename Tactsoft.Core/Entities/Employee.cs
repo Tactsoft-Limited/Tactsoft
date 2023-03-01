@@ -56,6 +56,6 @@ namespace Tactsoft.Core.Entities
 
         public Department Department { get; set; }
 
-        public ICollection<Attendance> Attendances { get; set; }
+        public ICollection<Attendence> Attendances { get; set; }
     }
 }

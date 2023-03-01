@@ -4,9 +4,9 @@ using Tactsoft.Core.Entities;
 
 namespace Tactsoft.Data.EntityConfigurations
 {
-    public class AttendanceConfiguration : IEntityTypeConfiguration<Attendance>
+    public class AttendanceConfiguration : IEntityTypeConfiguration<Attendence>
     {
-        public void Configure(EntityTypeBuilder<Attendance> builder)
+        public void Configure(EntityTypeBuilder<Attendence> builder)
         {
             builder.HasKey(x => x.Id);
             builder.HasOne(x=>x.Employee).WithMany(x=>x.Attendances).HasForeignKey(x => x.EmployeeId);

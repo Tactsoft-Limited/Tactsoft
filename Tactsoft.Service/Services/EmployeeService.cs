@@ -30,7 +30,7 @@ namespace Tactsoft.Service.Services
             });
         }
 
-        public string NameById(int id)
+        public string NameById(long id)
         {
             var emp = Find(id);
             return emp.EmployeeName;
