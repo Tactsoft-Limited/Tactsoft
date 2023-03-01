@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tactsoft.Core.Base;
 using System.ComponentModel.DataAnnotations.Schema;
+using Tactsoft.Core.Entities.Base;
 
 namespace Tactsoft.Core.Entities
 {

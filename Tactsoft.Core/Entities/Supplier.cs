@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Tactsoft.Core.Base;
+using Tactsoft.Core.Entities.Base;
 
 namespace Tactsoft.Core.Entities
 {

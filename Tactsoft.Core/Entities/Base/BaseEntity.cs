@@ -1,6 +1,4 @@
-﻿using Tactsoft.Core.Entities.Base;
-
-namespace Tactsoft.Core.Base
+﻿namespace Tactsoft.Core.Entities.Base
 {
     public class BaseEntity: MasterEntity
     {

@@ -4,10 +4,12 @@ using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Reflection;
 using Tactsoft.Service.DbDependencies;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Tactsoft.Core.Entities.Identity;
 
 namespace Tactsoft.Data.DbDependencies
 {
-    public class AppDbContext:DbContext   
+    public class AppDbContext : IdentityDbContext<ApplicationUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {

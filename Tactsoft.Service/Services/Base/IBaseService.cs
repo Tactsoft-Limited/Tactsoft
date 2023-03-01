@@ -1,5 +1,5 @@
-﻿using Tactsoft.Core.Base;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+using Tactsoft.Core.Entities.Base;
 
 namespace Tactsoft.Service.Services.Base
 {

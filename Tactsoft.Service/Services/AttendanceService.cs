@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tactsoft.Core.Entities;
+﻿using Tactsoft.Core.Entities;
 using Tactsoft.Data.DbDependencies;
 using Tactsoft.Service.Services.Base;
 
