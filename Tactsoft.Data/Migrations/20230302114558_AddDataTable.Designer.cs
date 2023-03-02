@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tactsoft.Data.DbDependencies;
 
@@ -11,9 +12,10 @@ using Tactsoft.Data.DbDependencies;
 namespace Tactsoft.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230302114558_AddDataTable")]
+    partial class AddDataTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -535,12 +537,12 @@ namespace Tactsoft.Data.Migrations
                             CountryId = 1L,
                             CreatedBy = 1L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            DepartmentId = 1L,
+                            DepartmentId = 3L,
                             EmployeeAddress = "Dhanmondi",
                             EmployeeName = "Hasan",
                             Gender = "Male",
                             Hsc = true,
-                            IdNumber = "IT-2310001",
+                            IdNumber = "CS-2310002",
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Msc = true,
                             Picture = "avatar2.png",
@@ -560,7 +562,7 @@ namespace Tactsoft.Data.Migrations
                             EmployeeName = "Rubel",
                             Gender = "Male",
                             Hsc = true,
-                            IdNumber = "HR-2310001",
+                            IdNumber = "HR-2310002",
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Msc = true,
                             Picture = "avatar2.png",
@@ -575,12 +577,12 @@ namespace Tactsoft.Data.Migrations
                             CountryId = 2L,
                             CreatedBy = 1L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            DepartmentId = 3L,
+                            DepartmentId = 1L,
                             EmployeeAddress = "Dhanmondi",
                             EmployeeName = "Sobuj",
                             Gender = "Male",
                             Hsc = true,
-                            IdNumber = "CS-2310001",
+                            IdNumber = "IT-2310002",
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Msc = true,
                             Picture = "avatar5.png",
@@ -595,12 +597,12 @@ namespace Tactsoft.Data.Migrations
                             CountryId = 1L,
                             CreatedBy = 1L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            DepartmentId = 1L,
+                            DepartmentId = 3L,
                             EmployeeAddress = "Dhanmondi",
                             EmployeeName = "Mamun",
                             Gender = "Male",
                             Hsc = true,
-                            IdNumber = "IT-2310002",
+                            IdNumber = "CS-2310001",
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Msc = true,
                             Picture = "avatar4.png",
@@ -620,7 +622,7 @@ namespace Tactsoft.Data.Migrations
                             EmployeeName = "Kalam",
                             Gender = "Male",
                             Hsc = true,
-                            IdNumber = "HR-2310002",
+                            IdNumber = "HR-2310001",
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Msc = true,
                             Picture = "avatar2.png",
@@ -635,12 +637,12 @@ namespace Tactsoft.Data.Migrations
                             CountryId = 1L,
                             CreatedBy = 1L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            DepartmentId = 3L,
+                            DepartmentId = 1L,
                             EmployeeAddress = "Dhanmondi",
                             EmployeeName = "Khurshed",
                             Gender = "Male",
                             Hsc = true,
-                            IdNumber = "CS-2310002",
+                            IdNumber = "IT-2310006",
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Msc = true,
                             Picture = "avatar5.png",

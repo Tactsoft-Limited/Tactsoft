@@ -138,6 +138,7 @@ namespace Tactsoft.Data.DbDependencies
                 Id = 1,
                 EmployeeName = "Hasan",
                 Gender="Male",
+                IdNumber = "IT-2310001",
                 JoiningDate = DateTime.ParseExact("2020-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
                 Hsc = true,
@@ -156,13 +157,14 @@ namespace Tactsoft.Data.DbDependencies
                 Id = 2,
                 EmployeeName = "Rubel",
                 Gender = "Male",
+                IdNumber = "HR-2310001",
                 JoiningDate = DateTime.ParseExact("2020-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
                 Hsc = true,
                 Bsc = true,
                 Msc = true,
                 EmployeeAddress = "Dhanmondi",
-                DepartmentId = 1,
+                DepartmentId = 2,
                 Picture = "avatar2.png",
                 CountryId = 1,
                 StateId = 2,
@@ -174,15 +176,16 @@ namespace Tactsoft.Data.DbDependencies
                 Id = 3,
                 EmployeeName = "Sobuj",
                 Gender = "Male",
+                IdNumber = "CS-2310001",
                 JoiningDate = DateTime.ParseExact("2020-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
                 Hsc = true,
                 Bsc = true,
                 Msc = true,
-                DepartmentId = 1,
+                DepartmentId = 3,
                 EmployeeAddress = "Dhanmondi",
                 Picture = "avatar5.png",
-                CountryId = 1,
+                CountryId = 2,
                 StateId = 2,
                 CityId = 1,
                 CreatedBy = 1,
@@ -192,6 +195,7 @@ namespace Tactsoft.Data.DbDependencies
                 Id = 4,
                 EmployeeName = "Mamun",
                 Gender = "Male",
+                IdNumber = "IT-2310002",
                 JoiningDate = DateTime.ParseExact("2020-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
                 Hsc = true,
@@ -210,13 +214,14 @@ namespace Tactsoft.Data.DbDependencies
                 Id = 5,
                 EmployeeName = "Kalam",
                 Gender = "Male",
+                IdNumber = "HR-2310002",
                 JoiningDate = DateTime.ParseExact("2020-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
                 Hsc = true,
                 Bsc = true,
                 Msc = true,
                 EmployeeAddress = "Dhanmondi",
-                DepartmentId = 1,
+                DepartmentId = 2,
                 Picture = "avatar2.png",
                 CountryId = 1,
                 StateId = 2,
@@ -228,6 +233,7 @@ namespace Tactsoft.Data.DbDependencies
                 Id = 6,
                 EmployeeName = "Khurshed",
                 Gender = "Male",
+                IdNumber = "CS-2310002",
                 JoiningDate = DateTime.ParseExact("2020-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
                 Hsc = true,
@@ -235,6 +241,7 @@ namespace Tactsoft.Data.DbDependencies
                 Msc = true,
                 EmployeeAddress = "Dhanmondi",
                 Picture = "avatar5.png",
+                DepartmentId = 3,
                 CountryId = 1,
                 StateId = 2,
                 CityId = 1,
@@ -264,8 +271,8 @@ namespace Tactsoft.Data.DbDependencies
             }, new Student
             {
                 Id = 2,
-                StudentName = "Rahman",
-                StudentEmail = "rahman@gmail.com",
+                StudentName = "Korim",
+                StudentEmail = "korim@gmail.com",
                 StudentPhone = "0170000000",
                 DateOfBirth = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
@@ -282,14 +289,14 @@ namespace Tactsoft.Data.DbDependencies
             }, new Student
             {
                 Id = 3,
-                StudentName = "Rahman",
-                StudentEmail = "rahman@gmail.com",
+                StudentName = "Sumi",
+                StudentEmail = "sumi@gmail.com",
                 StudentPhone = "0170000000",
                 DateOfBirth = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
                 Hsc = true,
                 Bsc = true,
-                GenderId = Gender.Male,
+                GenderId = Gender.Female,
                 Picture = "avatar5.png",
                 Address = "Mohammadpur",
                 CountryId = 1,
@@ -300,8 +307,8 @@ namespace Tactsoft.Data.DbDependencies
             }, new Student
             {
                 Id = 4,
-                StudentName = "Rahman",
-                StudentEmail = "rahman@gmail.com",
+                StudentName = "Mahabub",
+                StudentEmail = "mahabub@gmail.com",
                 StudentPhone = "0170000000",
                 DateOfBirth = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
@@ -318,8 +325,8 @@ namespace Tactsoft.Data.DbDependencies
             }, new Student
             {
                 Id = 5,
-                StudentName = "Rahman",
-                StudentEmail = "rahman@gmail.com",
+                StudentName = "Salim",
+                StudentEmail = "salim@gmail.com",
                 StudentPhone = "0170000000",
                 DateOfBirth = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
@@ -336,8 +343,8 @@ namespace Tactsoft.Data.DbDependencies
             }, new Student
             {
                 Id = 6,
-                StudentName = "Rahman",
-                StudentEmail = "rahman@gmail.com",
+                StudentName = "Kobir",
+                StudentEmail = "kobir@gmail.com",
                 StudentPhone = "0170000000",
                 DateOfBirth = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null),
                 Ssc = true,
@@ -357,6 +364,19 @@ namespace Tactsoft.Data.DbDependencies
             {
                 Id = 1,
                 DepartmentName = "IT",
+                CreatedBy = 1,
+                CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
+
+            }, new Department
+            {
+                Id = 2,
+                DepartmentName = "HR",
+                CreatedBy = 1,
+                CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
+            }, new Department
+            {
+                Id = 3,
+                DepartmentName = "CS",
                 CreatedBy = 1,
                 CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
             });

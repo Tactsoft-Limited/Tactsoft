@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tactsoft.Data.DbDependencies;
 
@@ -11,9 +12,10 @@ using Tactsoft.Data.DbDependencies;
 namespace Tactsoft.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230302112950_CreateAllowanceDeductionTable")]
+    partial class CreateAllowanceDeductionTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -432,20 +434,6 @@ namespace Tactsoft.Data.Migrations
                             CreatedBy = 1L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
                             DepartmentName = "IT"
-                        },
-                        new
-                        {
-                            Id = 2L,
-                            CreatedBy = 1L,
-                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            DepartmentName = "HR"
-                        },
-                        new
-                        {
-                            Id = 3L,
-                            CreatedBy = 1L,
-                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            DepartmentName = "CS"
                         });
                 });
 
@@ -540,7 +528,6 @@ namespace Tactsoft.Data.Migrations
                             EmployeeName = "Hasan",
                             Gender = "Male",
                             Hsc = true,
-                            IdNumber = "IT-2310001",
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Msc = true,
                             Picture = "avatar2.png",
@@ -555,12 +542,11 @@ namespace Tactsoft.Data.Migrations
                             CountryId = 1L,
                             CreatedBy = 1L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            DepartmentId = 2L,
+                            DepartmentId = 1L,
                             EmployeeAddress = "Dhanmondi",
                             EmployeeName = "Rubel",
                             Gender = "Male",
                             Hsc = true,
-                            IdNumber = "HR-2310001",
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Msc = true,
                             Picture = "avatar2.png",
@@ -572,15 +558,14 @@ namespace Tactsoft.Data.Migrations
                             Id = 3L,
                             Bsc = true,
                             CityId = 1L,
-                            CountryId = 2L,
+                            CountryId = 1L,
                             CreatedBy = 1L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            DepartmentId = 3L,
+                            DepartmentId = 1L,
                             EmployeeAddress = "Dhanmondi",
                             EmployeeName = "Sobuj",
                             Gender = "Male",
                             Hsc = true,
-                            IdNumber = "CS-2310001",
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Msc = true,
                             Picture = "avatar5.png",
@@ -600,7 +585,6 @@ namespace Tactsoft.Data.Migrations
                             EmployeeName = "Mamun",
                             Gender = "Male",
                             Hsc = true,
-                            IdNumber = "IT-2310002",
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Msc = true,
                             Picture = "avatar4.png",
@@ -615,12 +599,11 @@ namespace Tactsoft.Data.Migrations
                             CountryId = 1L,
                             CreatedBy = 1L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            DepartmentId = 2L,
+                            DepartmentId = 1L,
                             EmployeeAddress = "Dhanmondi",
                             EmployeeName = "Kalam",
                             Gender = "Male",
                             Hsc = true,
-                            IdNumber = "HR-2310002",
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Msc = true,
                             Picture = "avatar2.png",
@@ -635,12 +618,10 @@ namespace Tactsoft.Data.Migrations
                             CountryId = 1L,
                             CreatedBy = 1L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            DepartmentId = 3L,
                             EmployeeAddress = "Dhanmondi",
                             EmployeeName = "Khurshed",
                             Gender = "Male",
                             Hsc = true,
-                            IdNumber = "CS-2310002",
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Msc = true,
                             Picture = "avatar5.png",
@@ -1073,8 +1054,8 @@ namespace Tactsoft.Data.Migrations
                             Picture = "avatar4.png",
                             Ssc = true,
                             StateId = 2L,
-                            StudentEmail = "korim@gmail.com",
-                            StudentName = "Korim",
+                            StudentEmail = "rahman@gmail.com",
+                            StudentName = "Rahman",
                             StudentPhone = "0170000000"
                         },
                         new
@@ -1087,13 +1068,13 @@ namespace Tactsoft.Data.Migrations
                             CreatedBy = 1L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
                             DateOfBirth = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            GenderId = 2,
+                            GenderId = 1,
                             Hsc = true,
                             Picture = "avatar5.png",
                             Ssc = true,
                             StateId = 2L,
-                            StudentEmail = "sumi@gmail.com",
-                            StudentName = "Sumi",
+                            StudentEmail = "rahman@gmail.com",
+                            StudentName = "Rahman",
                             StudentPhone = "0170000000"
                         },
                         new
@@ -1111,8 +1092,8 @@ namespace Tactsoft.Data.Migrations
                             Picture = "avatar.png",
                             Ssc = true,
                             StateId = 2L,
-                            StudentEmail = "mahabub@gmail.com",
-                            StudentName = "Mahabub",
+                            StudentEmail = "rahman@gmail.com",
+                            StudentName = "Rahman",
                             StudentPhone = "0170000000"
                         },
                         new
@@ -1130,8 +1111,8 @@ namespace Tactsoft.Data.Migrations
                             Picture = "avatar4.png",
                             Ssc = true,
                             StateId = 2L,
-                            StudentEmail = "salim@gmail.com",
-                            StudentName = "Salim",
+                            StudentEmail = "rahman@gmail.com",
+                            StudentName = "Rahman",
                             StudentPhone = "0170000000"
                         },
                         new
@@ -1149,8 +1130,8 @@ namespace Tactsoft.Data.Migrations
                             Picture = "avatar4.png",
                             Ssc = true,
                             StateId = 2L,
-                            StudentEmail = "kobir@gmail.com",
-                            StudentName = "Kobir",
+                            StudentEmail = "rahman@gmail.com",
+                            StudentName = "Rahman",
                             StudentPhone = "0170000000"
                         });
                 });
