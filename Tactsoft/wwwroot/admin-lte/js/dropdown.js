@@ -74,7 +74,6 @@ function LoadState(CountryId) {
 }
 
 function LoadCity(StateId) {
-    var $city = $('#CityId');
     $.ajax({
         type: "get",
         url: "/Common/GetCitiesByStateId",

@@ -58,18 +58,13 @@ namespace Tactsoft.Service.Services.Base
             _context.SaveChanges();
         }
 
-        public void Update(T entity, int id)
+        public void Update(long id, T entity)
         {
             if (entity == null)
             {
                 throw new ArgumentNullException("entity");
             }
-            T exist = _context.Set<T>().Find(id);
-            if (exist != null)
-            {
-                _context.Entry(exist).CurrentValues.SetValues(entity);
-                _context.SaveChanges();
-            }
+            _context.Entry(entity).State = EntityState.Modified;
             _context.SaveChanges();
         }
 
@@ -112,12 +107,7 @@ namespace Tactsoft.Service.Services.Base
             {
                 throw new ArgumentNullException("entity");
             }
-            T exist = await _context.Set<T>().FindAsync(id);
-            if (exist != null)
-            {
-                _context.Entry(entity).State = EntityState.Modified;
-               await _context.SaveChangesAsync();
-            }
+            _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return entity;

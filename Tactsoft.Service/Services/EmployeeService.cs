@@ -14,6 +14,15 @@ namespace Tactsoft.Service.Services
             this._context = context;
         }
 
+        public IEnumerable<SelectListItem> Dropdown()
+        {
+            return All().Select(x=> new SelectListItem
+            {
+                Text = x.EmployeeName +"("+ x.IdNumber+")",
+                Value = x.Id.ToString(),
+            });
+        }
+
         public IEnumerable<Employee> AllByDepartmentId(int deptId)
         {
             if (deptId == 0)

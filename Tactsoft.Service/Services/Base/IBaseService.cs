@@ -10,7 +10,7 @@ namespace Tactsoft.Service.Services.Base
         T Find(long id);
         T Find(Int64 id, params Expression<Func<T, Object>>[] includeProperties);
         void Insert(T entity);
-        void Update(T entity, int id);
+        void Update(long id, T entity);
         void Delete(T entity);
 
 

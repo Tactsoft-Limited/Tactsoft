@@ -17,5 +17,6 @@ namespace Tactsoft.Core.Entities
         [Display(Name = "Allowance/Deduction Type")]
         public string AllowanceDeductionType { get; set; }
 
+        public ICollection<EmployeeSalaryDetail> EmployeeSalaryDetailes { get; set; }
     }
 }
