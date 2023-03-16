@@ -27,5 +27,11 @@ namespace Tactsoft.Service.Services
                 Value = x.Id.ToString(),
             });
         }
+
+        public string NameById(long id)
+        {
+            var ad = Find(id);
+            return ad.AllowanceDeductionName;
+        }
     }
 }

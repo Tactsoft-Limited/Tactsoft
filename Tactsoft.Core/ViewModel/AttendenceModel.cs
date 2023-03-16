@@ -14,9 +14,9 @@ namespace Tactsoft.Core.ViewModel
 
         [Required]
         [DisplayName("Department")]
-        public int DepartmentId { get; set; }
+        public long DepartmentId { get; set; }
 
-        [Required]
+        [Required] 
         [DisplayName("Attendence Date")]
         public DateTime AttendenceDate { get; set; }
 

@@ -7,7 +7,7 @@ namespace Tactsoft.Service.Services
     public interface IEmployeeService:IBaseService<Employee>
     {
         IEnumerable<SelectListItem> Dropdown();
-        IEnumerable<Employee> AllByDepartmentId(int deptId);
+        IEnumerable<Employee> AllByDepartmentId(long deptId);
         IEnumerable<SelectListItem> GetAllEmployeeForDropDown();
         string NameById(long id);
     }

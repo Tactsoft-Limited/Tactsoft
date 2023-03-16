@@ -14,16 +14,11 @@ namespace Tactsoft.Core.Entities
         [Required]
         [Display(Name ="Employee")]
         public long EmployeeId { get; set; }
-
-        [NotMapped]
-        [Display(Name = "Department")]
-        public long DepartmentId { get; set; }
+        public Employee Employee { get; set; }
 
         [Required]
         [Display(Name = "Present Status")]
         public Boolean IsPresent { get; set; }
-
-
-        public Employee Employee { get; set; }
+     
     }
 }

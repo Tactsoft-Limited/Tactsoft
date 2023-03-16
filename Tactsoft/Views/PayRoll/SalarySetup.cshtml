@@ -1,7 +1,7 @@
-﻿@model Tactsoft.Core.ViewModel.AttendenceModel
+﻿@model Tactsoft.Core.ViewModel.SalarySetupModel
 
 @{
-    ViewData["Title"] = "Take Attendence";
+    ViewData["Title"] = "SalarySetup";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
     int i = 0;
 }
@@ -26,62 +26,68 @@
         <div class="container-fluid">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Employee Attendence</h3>
+                    <h3 class="card-title">Employee Salary Setup</h3>
                 </div>
                 <div class="card-body">
-                    <form method="post" asp-controller="Attendence" asp-action="TakeAttendence">
+                    <form method="post" asp-controller="PayRoll" asp-action="SalarySetup">
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label asp-for="DepartmentId"></label>
-                                    <select class="form-control form-control-sm" asp-for="DepartmentId" >
+                                    <select class="form-control form-control-sm" asp-for="DepartmentId" asp-items="@ViewBag.DepartmentId">
                                         <option value="">Select Department</option>
-                                        <option value="0">All Employee</option>
                                     </select>
                                     <span asp-validation-for="DepartmentId" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label asp-for="AttendenceDate"></label>
-                                    <input type="date" class="form-control form-control-sm" asp-for="AttendenceDate" min="@(DateTime.Now.ToString("yyyy-MM-dd"))" />
-                                    <span asp-validation-for="AttendenceDate" class="text-danger"></span>
+                                    <label asp-for="EmployeeId"></label>
+                                    <select asp-for="EmployeeId" class="form-control form-control-sm" asp-items="@ViewBag.EmployeeId">
+                                        <option value="">Select Employee</option>
+                                    </select>
+                                    <span asp-validation-for="EmployeeId" class="text-danger"></span>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <br />
-                                <input class="btn btn-primary mt-2 btn-sm" type="submit" value="Search Employee" />
+                                <input class="btn btn-primary mt-2 btn-sm" type="submit" value="Employee A/D" />
                             </div>
                         </div>
                     </form>
 
-                    @if (Model.AttendenceList != null)
+                    @if (Model.SalarySetupList != null)
                     {
-                        <form method="post" action="SaveAttendence">
+                        <form method="post" action="SaveSalarySetup">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>Employeee</th>
-                                        <th>
-                                            IsPresent
-                                            <input type="checkbox" id="checkAll" value="Check All" />
-                                        </th>
+                                        <th>Allowance/Deduction Name</th>
+                                        <th>Type</th>
+                                        <th>IsPresent</th>
+                                        <th>Value</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model.AttendenceList)
+                                    @foreach (var item in Model.SalarySetupList)
                                     {
                                         <tr>
                                             <td>
-                                                @item.Name
-                                                <input type="hidden" name="AttendenceList[@i].AttendenceId" value="@item.AttendenceId" />
-                                                <input type="hidden" name="AttendenceList[@i].EmployeeId" value="@item.EmployeeId" />
-                                                <input type="hidden" asp-for="AttendenceDate" />
+                                                @item.AllowanceDeductionName
+                                                <input type="hidden" name="SalarySetupList[@i].SalarySetupId" value="@item.SalarySetupId" />
+                                                <input type="hidden" name="SalarySetupList[@i].AllowanceDeductionId" value="@item.AllowanceDeductionId" />
+                                                <input type="hidden" asp-for="EmployeeId" />
                                                 <input type="hidden" asp-for="DepartmentId" />
 
                                             </td>
                                             <td>
-                                                <input asp-for="@item.IsPresent" type="checkbox" name="AttendenceList[@i].IsPresent" />
+                                                @item.AllowanceDeductionType
+                                            </td>
+                                            <td>
+                                                <input asp-for="@item.IsPercent" type="checkbox" name="SalarySetupList[@i].IsPercent" />
+                                            </td>
+                                            <td>
+                                                <input asp-for="@item.Value" type="number" name="SalarySetupList[@i].Value" />
                                             </td>
                                         </tr>
                                         i++;
@@ -99,11 +105,3 @@
         </div>
     </section>
 </div>
-
-@section Scripts{
-    <script>
-        $("#checkAll").click(function () {
-            $('input:checkbox').not(this).prop('checked', this.checked);
-        });
-    </script>
-}

@@ -23,7 +23,7 @@ namespace Tactsoft.Service.Services
             });
         }
 
-        public IEnumerable<Employee> AllByDepartmentId(int deptId)
+        public IEnumerable<Employee> AllByDepartmentId(long deptId)
         {
             if (deptId == 0)
                 return All();
