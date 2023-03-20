@@ -7,5 +7,6 @@ namespace Tactsoft.Service.Services
     public interface IStateService:IBaseService<State>
     {
         IEnumerable<SelectListItem> Dropdown();
+        string NameById(long stateId);
     }
 }

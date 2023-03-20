@@ -7,6 +7,6 @@ namespace Tactsoft.Service.Services
     public interface ICityService : IBaseService<City>
     {
         IEnumerable<SelectListItem> Dropdown();
-        
+        string NameById(long countryId);
     }
 }

@@ -39,10 +39,10 @@
                         <thead>
                             <tr>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.PurchaseDate)
+                                    @Html.DisplayNameFor(model => model.PurchaseCode)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.PurchaseCode)
+                                    @Html.DisplayNameFor(model => model.PurchaseDate)
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.SupplierId)
@@ -57,17 +57,9 @@
                                     @Html.DisplayNameFor(model => model.PoNumber)
                                 </th>
                                 <th>
-                                    @Html.DisplayNameFor(model => model.DiscountAmount)
-                                </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.VatAmount)
-                                </th>
-                                <th>
                                     @Html.DisplayNameFor(model => model.PaymentAmount)
                                 </th>
-                                <th>
-                                    @Html.DisplayNameFor(model => model.PaymentType)
-                                </th>
+
                                 <th style="width:90px">Action</th>
                             </tr>
                         </thead>
@@ -76,10 +68,10 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.PurchaseDate)
+                                        @Html.DisplayFor(modelItem => item.PurchaseCode)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.PurchaseCode)
+                                        @Html.DisplayFor(modelItem => item.PurchaseDate)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Supplier.SupplierName)
@@ -94,16 +86,7 @@
                                         @Html.DisplayFor(modelItem => item.PoNumber)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem => item.DiscountAmount)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.VatAmount)
-                                    </td>
-                                    <td>
                                         @Html.DisplayFor(modelItem => item.PaymentAmount)
-                                    </td>
-                                    <td>
-                                        @Html.DisplayFor(modelItem => item.PaymentType)
                                     </td>
 
                                     <td style="width:90px">

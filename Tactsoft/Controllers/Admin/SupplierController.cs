@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics.Metrics;
 using Tactsoft.Core.Entities;
 using Tactsoft.Service.Services;
 
@@ -42,16 +43,22 @@ namespace Tactsoft.Controllers.Admin
             ViewData["StateId"] = _stateService.Dropdown();
             ViewData["CityId"] = _cityService.Dropdown();
 
-            return PartialView("Create", supplier);
+            return View(supplier);
         }
 
         // POST: SupplierController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> CreateAsync(Supplier supplier)
         {
             try
             {
+                if (ModelState.IsValid)
+                {
+                    await _supplierService.InsertAsync(supplier);
+
+                }
+                TempData["successAlert"] = "Supplier save successfull.";
                 return RedirectToAction(nameof(Index));
             }
             catch

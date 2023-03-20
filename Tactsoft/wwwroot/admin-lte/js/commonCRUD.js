@@ -1,4 +1,6 @@
-﻿//Country Modal Popup
+﻿
+
+//Country Modal Popup
 var AddCountry = function () {
     var url = "/Country/CreatePartial";
     $('#titleMediumModal').html("Add New Country");

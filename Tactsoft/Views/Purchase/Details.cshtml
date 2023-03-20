@@ -25,8 +25,10 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <h3 class="card-title">@ViewData["Title"] Details</h3>
+
+                    <button class="btn btn-info" onclick="PrintInvoice(@Model.Id)"><span class="fa fa-print"></span></button>
                 </div>
                 <form>
                     <div class="card-body">
@@ -40,7 +42,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label asp-for="PurchaseCode" class="control-label"></label>
-                                    <input asp-for="PurchaseCode" class="form-control form-control-sm form-control-plaintext " readonly  />
+                                    <input asp-for="PurchaseCode" class="form-control form-control-sm form-control-plaintext " readonly />
                                     <span asp-validation-for="PurchaseCode" class="text-danger"></span>
                                 </div>
 
@@ -75,7 +77,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label asp-for="LcDate" class="control-label"></label>
-                                    <input asp-for="LcDate" class="form-control form-control-sm form-control-plaintext " readonly value="@DateTime.Now.ToString("yyyy-MM-dd")"/>
+                                    <input asp-for="LcDate" class="form-control form-control-sm form-control-plaintext " readonly value="@DateTime.Now.ToString("yyyy-MM-dd")" />
                                     <span asp-validation-for="LcDate" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
@@ -129,7 +131,7 @@
                                                 </td>
                                                 <td>
                                                     <input type="number" asp-for="@Model.PurchaseItems[i].Amount" class="form-control form-control-sm form-control-plaintext " readonly>
-                                                </td>                                                
+                                                </td>
                                             </tr>
                                         }
                                     </tbody>
@@ -198,7 +200,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group row col-md-6">
-                                    
+
                                 </div>
                                 <div class="form-group row col-md-6">
                                     <label asp-for="PaymentAmount" class="col-sm-5 col-form-label col-form-label-sm"></label>
@@ -208,7 +210,7 @@
                                     </div>
                                 </div>
                             </div>
-                           
+
                         </div>
                     </div>
 
@@ -231,4 +233,11 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script src="~/admin-lte/js/ItemCRUD.js"></script>
+    <script>
+        //PrintInvoice
+        var PrintInvoice = function (id) {
+            location.href = "/Report/PrintInvoice?id=" + id;
+        };
+
+    </script>
 }

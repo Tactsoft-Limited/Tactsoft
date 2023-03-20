@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Tactsoft.Core.Entities;
 using Tactsoft.Service.Services;
 
 namespace Tactsoft.Controllers.Admin
@@ -34,10 +35,14 @@ namespace Tactsoft.Controllers.Admin
         // POST: ItemController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(Item item)
         {
             try
             {
+                if (ModelState.IsValid)
+                {
+                    await _itemService.InsertAsync(item);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch

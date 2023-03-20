@@ -1,3 +1,4 @@
+using Rotativa.AspNetCore;
 using Tactsoft.Service.DbDependencies;
 using Tactsoft.Service.Dependency;
 
@@ -22,6 +23,9 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+IWebHostEnvironment env = app.Environment;
+RotativaConfiguration.Setup(env.WebRootPath, "../Rotativa");
 
 app.MapControllerRoute(
     name: "default",

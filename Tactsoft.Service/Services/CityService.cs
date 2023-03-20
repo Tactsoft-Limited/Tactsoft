@@ -18,5 +18,10 @@ namespace Tactsoft.Service.Services
         {
             return All().Select(x => new SelectListItem { Text = x.CityName, Value = x.Id.ToString() });
         }
+
+        public string NameById(long stateId)
+        {
+            return Find(stateId).CityName;
+        }
     }
 }
