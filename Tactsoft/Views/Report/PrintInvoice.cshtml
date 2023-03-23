@@ -2,59 +2,7 @@
 @{
     ViewData["Title"] = "Print Invoice";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
-    int i = 1;
-    double subTotal = 0;
 }
-
-<style>
-    /*
-Invoice Start
-=====================================*/
-.invoice{
-	width: 100%;
-	margin: auto;
-	margin-bottom: 100px;
-	overflow-x: hidden;
-}
-.invoice h4{
-	font-weight: bold;
-	font-size: 14px
-}
-.invoice h6{
-	font-size: 14px
-}
-.invoice .table thead{
-	background-color: #C5F7F8;
-}
-.invoice .table thead .item{
-	width: 350px;
-}
-.invoice .table th,td{
-	font-size: 14px
-}
-.invoice .amount-count h4{
-	padding-right: 20px;
-}
-.invoice .amount-count .g-total h4{
-	color: #218F91;
-	font-size: 16px;
-	font-weight: bold;
-}
-.invoice .amount-count .g-total h6{
-	color: #218F91;
-	font-size: 16px;
-	font-weight: bold;
-}
-@*@media only screen and (max-width: 768px) {
-	.invoice{
-		width: 100%;
-		padding: 10% 5%!important;
-	}
-}*@
-/*
-Invoice End
-=====================================*/
-</style>
 
 <div class="content-wrapper">
     <div class="content-header">
@@ -63,106 +11,16 @@ Invoice End
                 <div class="col-sm-6">
                     <h3 class="m-0">@ViewData["Title"]</h3>
                 </div>
-                <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard">Dashboard</a></li>
-                        <li class="breadcrumb-item active">@ViewData["Title"]</li>
-                    </ol>
+                <div class="col-sm-6 text-end">
+                    <button class="btn btn-info btn-sm" onclick="printDiv('printableArea')"><span class="fa fa-print"></span></button>
+                    <a class="btn btn-success btn-sm" onclick="DownloadPDF('@Model.PurchaseViewModel.Id')"><i class="fa fa-download"></i></a>
                 </div>
             </div>
         </div>
     </div>
-
     <section class="content">
         <div class="container-fluid">
-            <!-- =========== Invoice Start =========== -->
-            <div class="invoice border p-5" id="printableArea">
-                <div class="row">
-                    <div  class="d-flex justify-content-between">
-                        <h2 class="text-uppercase fw-bold">Invoice</h2>
-                        <div class="panel-footer text-right">
-                            <button class="btn btn-info btn-sm" onclick="printDiv('printableArea')"><span class="fa fa-print"></span></button>
-                            <a class="btn btn-success btn-sm" onclick="DownloadPDF('@Model.PurchaseViewModel.Id')"><i class="fa fa-download"></i></a>
-                        </div>
-                    </div>                    
-                    
-                    <div class="mt-4">
-                        <h6 class="name">Tactsoft Ltd</h6>
-                        <h6 class="address">2/2, Lalmatia, Block#C</h6>
-                        <h6 class="h6hone">017xxxxxxxx</h6>
-                        <h6 class="email">xxxxx@example.com</h6>
-                    </div>
-                    <div class="mt-4 d-flex justify-content-between">
-                        <div>
-                            <h4 class="mb-3">Bill to:</h4>
-                            <h6 class="name">@Model.SupplierInfoViewModel.SupplierName</h6>
-                            <h6 class="address">@Model.SupplierInfoViewModel.SupplierAddress</h6>
-                            <h6 class="h6hone">@Model.SupplierInfoViewModel.SupplierPhone</h6>
-                            <h6 class="email">@Model.SupplierInfoViewModel.SupplierEmail</h6>
-                        </div>
-                        <div>
-                            <h4>Invoice number: <span class="fw-normal">@Model.PurchaseViewModel.PurchaseCode</span></h4>
-                            <h4>Invoice date: <span class="fw-normal">@Model.PurchaseViewModel.PurchaseDate.ToString("MM/dd/yyyy")</span></h4>
-                            <h4>Payment date: <span class="fw-normal">@Model.PurchaseViewModel.PurchaseDate.ToString("MM/dd/yyyy")</span></h4>
-                            <h4>Payment Type: <span class="fw-normal">@Model.PurchaseViewModel.PaymentType</span></h4>
-                        </div>
-                    </div>
-                    <table class="mt-4 table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">SL</th>
-                                <th scope="col">Item Name</th>
-                                <th scope="col">Quantity</th>
-                                <th scope="col">Purchase Price</th>
-                                <th scope="col">Amount</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model.PurchaseDetailViewModels)
-                            {
-                                <tr>
-                                    <td>@i</td>
-                                    <td>@item.ItemName</td>
-                                    <td>@item.Quantity</td>
-                                    <td>@item.PurchasePrice</td>
-                                    <td>@item.Amount</td>
-                                </tr>
-                                i++;
-                                subTotal += item.Amount;
-                            }
-                        </tbody>
-                    </table>
-                    <div class="mt-2 px-5 d-flex justify-content-end amount-count">
-                        <div>
-                            <div class="d-flex justify-content-end">
-                                <h4>Subtotal</h4>
-                                <h6>@subTotal</h6>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <h4>Vat (@Model.PurchaseViewModel.VatPercent)%</h4>
-                                <h6>@Model.PurchaseViewModel.VatAmount</h6>
-                            </div>
-                            <div class="d-flex justify-content-end">
-                                <h4>Fees/Discounts (@Model.PurchaseViewModel.DiscountPercent)%</h4>
-                                <h6>@Model.PurchaseViewModel.DiscountAmount</h6>
-                            </div>
-                            <div class="d-flex justify-content-end g-total pt-2">
-                                <h4 class="text-uppercase">Grand Total</h4>
-                                <h6>@((subTotal + Model.PurchaseViewModel.VatAmount)-Model.PurchaseViewModel.DiscountAmount)</h6>
-                            </div>
-                            <div class="d-flex justify-content-end g-total pt-2">
-                                <h4 class="text-uppercase">Payment Amount</h4>
-                                <h6>@(Model.PurchaseViewModel.PaymentAmount)</h6>
-                            </div>
-                            <div class="d-flex justify-content-end g-total pt-2">
-                                <h4 class="text-uppercase">Due Amount</h4>
-                                <h6>@(((subTotal + Model.PurchaseViewModel.VatAmount)-Model.PurchaseViewModel.DiscountAmount)- Model.PurchaseViewModel.PaymentAmount)</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- =========== Invoice End =========== -->
+            <partial name="_PrintInvoice.cshtml" />
         </div>
     </section>
 </div>

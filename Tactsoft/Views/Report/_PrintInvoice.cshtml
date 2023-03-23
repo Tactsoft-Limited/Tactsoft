@@ -1,0 +1,130 @@
+﻿@model Tactsoft.Core.ViewModel.InvoiceReportViewModel
+@{
+    ViewData["Title"] = "Print Invoice";
+    int i = 1;
+    double subTotal = 0;
+}
+
+<style>
+    .invoice .table th, td {
+        font-size: 14px
+    }
+    table td{
+        border:none !important;
+    }
+</style>
+
+<!-- =========== Invoice Start =========== -->
+<div class="invoice border p-5" id="printableArea">
+    <div class="row">
+        <table style="border-color:#fff;" class="table  table-borderless table-sm">
+            <tbody>
+                <tr>
+                    <td colspan="3" class="fs-2 fw-bold pb-4">Invoice</td>
+                </tr>
+                <tr>
+                    <td colspan="3">Tactsoft Ltd</td>
+                </tr>
+                <tr>
+                    <td colspan="3">2/2, Lalmatia, Block#C, Dhaka-1207</td>
+                </tr>
+                <tr>
+                    <td colspan="3">017xxxxxxxx</td>
+                </tr>
+                <tr>
+                    <td colspan="3" class="pb-5">xxxxx@example.com</td>
+                </tr>
+                <tr>
+                    <td class="fw-bold" colspan="3">Bill to:</td>
+                </tr>
+                <tr>
+                    <td>@Model.SupplierInfoViewModel.SupplierName</td>
+                    <td class="fw-bold text-end">Invoice Number : @Model.PurchaseViewModel.PurchaseCode</td>
+                </tr>
+                <tr>
+                    <td>@Model.SupplierInfoViewModel.SupplierAddress</td>
+                    <td class="fw-bold text-end">Invoice Date : @Model.PurchaseViewModel.PurchaseDate.ToString("MM/dd/yyyy")</td>
+                    
+                </tr>
+                <tr>
+                    <td>@Model.SupplierInfoViewModel.SupplierPhone</td>
+                    <td class="fw-bold text-end">Payment Date : @Model.PurchaseViewModel.PurchaseDate.ToString("MM/dd/yyyy")</td>
+                </tr>
+                <tr>
+                    <td>@Model.SupplierInfoViewModel.SupplierEmail</td>
+                    <td class="fw-bold text-end">Payment Type : @Model.PurchaseViewModel.PaymentType </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="mt-4 table align-middle table-borderless table-sm">
+            <thead  style="background-color:cadetblue; text-align:left">
+                <tr>
+                    <th scope="col">SL.</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col" style="width: 100px">Quantity</th>
+                    <th scope="col" style="width: 140px">Price per unit</th>
+                    <th scope="col" style="width: 100px">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.PurchaseDetailViewModels)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.ItemName</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.PurchasePrice</td>
+                        <td>@item.Amount</td>
+                    </tr>
+                    i++;
+                    subTotal += item.Amount;
+                }
+
+                <tr style="border-color:#ffffff">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Sub total</td>
+                    <td>@(subTotal)</td>
+                </tr>                
+                <tr style="border-color:#ffffff">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Vat (@Model.PurchaseViewModel.VatPercent)%</td>
+                    <td>@Model.PurchaseViewModel.VatAmount</td>
+                </tr>
+                <tr style="border-color:#ffffff">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Discounts (@Model.PurchaseViewModel.DiscountPercent)%</td>
+                    <td>@Model.PurchaseViewModel.DiscountAmount</td>
+                </tr>
+                <tr style="border-color:#ffffff">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="border-bottom: 1px solid #808080 !important">Grand Total</td>
+                    <td style="border-bottom: 1px solid #808080 !important">@((subTotal + Model.PurchaseViewModel.VatAmount)-Model.PurchaseViewModel.DiscountAmount)</td>
+                </tr>
+                <tr style="border-color:#ffffff">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Payment Amount</td>
+                    <td>@(Model.PurchaseViewModel.PaymentAmount)</td>
+                </tr>
+                <tr style="border-color:#ffffff">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Due Amount</td>
+                    <td>@(((subTotal + Model.PurchaseViewModel.VatAmount)-Model.PurchaseViewModel.DiscountAmount) - Model.PurchaseViewModel.PaymentAmount)</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+<!-- =========== Invoice End =========== -->

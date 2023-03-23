@@ -115,6 +115,11 @@ namespace Tactsoft.Controllers.Admin
             }
         }
 
+        public ActionResult ReportByDateRange()
+        {
+            return View();
+        }
+
         public JsonResult GetItems()
         {
             return Json(_itemService.All());

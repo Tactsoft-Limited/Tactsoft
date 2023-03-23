@@ -1,4 +1,10 @@
-﻿<aside class="main-sidebar sidebar-light-primary elevation-1">
+﻿<style>
+    ul, li, a {
+        border-radius: 0px !important;
+        box-shadow: none !important;
+    }
+</style>
+<aside class="main-sidebar sidebar-light-primary elevation-1">
     
     <a href="index3.html" class="brand-link">
         <img src="~/photo.jpg" alt="Tactsoft Logo" class="brand-image img-circle elevation-1" style="opacity: .8">
@@ -27,10 +33,27 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Purchase" asp-action="Index">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cart-plus"></i>
-                        <p>Purchase</p>
+                        <p>
+                            Purchase
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
                     </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Purchase" asp-action="Index">
+                                <i class="nav-icon fa fa-o"></i>
+                                <p>Purchase List</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Purchase" asp-action="ReportByDateRange">
+                                <i class="fas fa-user-check nav-icon"></i>
+                                <p>Purchase Report</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Employee" asp-action="Index">

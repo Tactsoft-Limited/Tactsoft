@@ -36,7 +36,6 @@ namespace Tactsoft.Controllers.Admin
             rpt.ViewName = "DownloadInvoicePDF";
             rpt.Model = result;
             return rpt;
-
         }
 
     }

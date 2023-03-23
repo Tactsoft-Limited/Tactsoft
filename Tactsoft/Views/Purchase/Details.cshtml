@@ -25,10 +25,13 @@
     <section class="content">
         <div class="container-fluid">
             <div class="card">
-                <div class="card-header d-flex justify-content-between">
-                    <h3 class="card-title">@ViewData["Title"] Details</h3>
-
-                    <button class="btn btn-info" onclick="PrintInvoice(@Model.Id)"><span class="fa fa-print"></span></button>
+                <div class="card-header">
+                    <div class="d-flex justify-content-between">
+                        <h3 class="card-title">@ViewData["Title"] List</h3>
+                        <a class="btn btn-primary btn-sm" onclick="PrintInvoice(@Model.Id)">
+                            <i class="fa fa-print"></i>
+                        </a>
+                    </div>
                 </div>
                 <form>
                     <div class="card-body">
