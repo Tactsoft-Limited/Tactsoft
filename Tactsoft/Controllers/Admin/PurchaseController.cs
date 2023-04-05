@@ -21,7 +21,7 @@ namespace Tactsoft.Controllers.Admin
         // GET: PurchaseController
         public async Task<IActionResult> Index()
         {
-            return View(await _purchaseService.GetAllAsync(i=>i.Supplier));
+            return View(await _purchaseService.GetAllAsync(i=>i.Supplier, x=>x.PurchaseItems));
         }
 
         // GET: PurchaseController/Details/5
@@ -115,11 +115,7 @@ namespace Tactsoft.Controllers.Admin
             }
         }
 
-        public ActionResult ReportByDateRange()
-        {
-            return View();
-        }
-
+        
         public JsonResult GetItems()
         {
             return Json(_itemService.All());

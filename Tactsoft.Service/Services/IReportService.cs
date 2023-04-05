@@ -9,6 +9,8 @@ namespace Tactsoft.Service.Services
 {
     public interface IReportService
     {
-        InvoiceReportViewModel GetInvoiceReportData(long id);
+        ReportViewModel GetInvoiceReportData(long id);
+
+        List<ReportByDateRangeViewModel> ReportByDateRange(DateTime? startDate, DateTime? endDate);
     }
 }

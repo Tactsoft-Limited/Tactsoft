@@ -36,6 +36,17 @@ namespace Tactsoft.Controllers.Admin
             return Json(citiesList);
         }
 
+        public JsonResult GetEmployeeByDepartment(int departmentId)
+        {
+            List<Employee> employeeList = new List<Employee>();
+            employeeList = (from employee in _context.Employees
+                          where employee.DepartmentId == departmentId
+                            select employee).ToList();
+
+            return Json(employeeList);
+
+        }
+
         public JsonResult GetRandomNumber( int departmentId)
         {
             string date = DateTime.Now.ToString("yy");

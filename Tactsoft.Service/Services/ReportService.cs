@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Tactsoft.Core.ViewModel;
+﻿using Tactsoft.Core.ViewModel;
 using Tactsoft.Data.DbDependencies;
 
 namespace Tactsoft.Service.Services
@@ -15,17 +10,19 @@ namespace Tactsoft.Service.Services
         private readonly ICountryService _countryService;
         private readonly IStateService _stateService;
         private readonly ICityService _cityService;
-        public ReportService(AppDbContext context, IItemService itemService, IStateService stateService, ICityService cityService, ICountryService countryService)
+        private readonly ISupplierService _supplierService;
+        public ReportService(AppDbContext context, IItemService itemService, IStateService stateService, ICityService cityService, ICountryService countryService, ISupplierService supplierService)
         {
             this._context = context;
             this._itemService = itemService;
             this._stateService = stateService;
             this._cityService = cityService;
             this._countryService = countryService;
+            this._supplierService = supplierService;
         }
-        public InvoiceReportViewModel GetInvoiceReportData(long id)
+        public ReportViewModel GetInvoiceReportData(long id)
         {
-            InvoiceReportViewModel invoiceReportViewModel = new InvoiceReportViewModel();
+            ReportViewModel invoiceReportViewModel = new ReportViewModel();
             invoiceReportViewModel.PurchaseViewModel = GetByPurchaseReportData(id);
             invoiceReportViewModel.PurchaseDetailViewModels = GetByPurchaseDetailsList(id);
             invoiceReportViewModel.SupplierInfoViewModel = GetBySupplierInfo(invoiceReportViewModel.PurchaseViewModel.SupplierId);
@@ -53,19 +50,20 @@ namespace Tactsoft.Service.Services
         private List<PurchaseDetailViewModel> GetByPurchaseDetailsList(long id)
         {
             return (from _purchaseItems in _context.PurchaseItems
-                                    join _items in _context.Items
-                                    on _purchaseItems.ItemId equals _items.Id
-                                    where (_purchaseItems.PurchaseId == id)
-                                    select new PurchaseDetailViewModel
-                                    {
-                                        Id = _purchaseItems.Id,
-                                        ItemId = _purchaseItems.ItemId,
-                                        ItemName = _itemService.NameById(_purchaseItems.ItemId),
-                                        PurchasePrice = _purchaseItems.PurchasePrice,
-                                        Quantity = _purchaseItems.Quantity,
-                                        Amount = (_purchaseItems.PurchasePrice) * (_purchaseItems.Quantity)                                        
-                                    }).ToList();
-             
+                    join _items in _context.Items
+                    on _purchaseItems.ItemId equals _items.Id
+                    where (_purchaseItems.PurchaseId == id)
+                    select new PurchaseDetailViewModel
+                    {
+                        Id = _purchaseItems.Id,
+                        ItemId = _purchaseItems.ItemId,
+                        ItemName = _items.ItemName,
+                        PurchasePrice = _purchaseItems.PurchasePrice,
+                        Quantity = _purchaseItems.Quantity,
+                        Amount = (_purchaseItems.PurchasePrice) * (_purchaseItems.Quantity)
+
+                    }).ToList();
+
         }
 
         private PurchaseViewModel GetByPurchaseReportData(long id)
@@ -94,6 +92,29 @@ namespace Tactsoft.Service.Services
                     }).FirstOrDefault();
         }
 
-        
+        public List<ReportByDateRangeViewModel> ReportByDateRange(DateTime? startDate, DateTime? endDate)
+        {
+            return (from _purchase in _context.Purchases
+                        where _purchase.PurchaseDate >= startDate
+                        where _purchase.PurchaseDate <= endDate
+                        select new ReportByDateRangeViewModel
+                        {
+                            PurchaseCode = _purchase.PurchaseCode,
+                            PurchaseDate = _purchase.PurchaseDate,
+                            Supplier = _supplierService.NameById(_purchase.SupplierId),
+                            PurchaseDetailViewModels = (from _purchaseItem in _context.PurchaseItems
+                                                        where _purchaseItem.PurchaseId == _purchase.Id
+                                                        select new PurchaseDetailViewModel
+                                                        {
+                                                            Id = _purchaseItem.Id,
+                                                            ItemName = _itemService.NameById(_purchaseItem.ItemId),
+                                                            Quantity = _purchaseItem.Quantity,
+                                                            PurchasePrice = _purchaseItem.PurchasePrice,
+                                                            Amount = (_purchaseItem.Quantity * _purchaseItem.PurchasePrice),
+
+                                                        }).ToList(),
+
+                        }).ToList();
+        }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model Tactsoft.Core.ViewModel.InvoiceReportViewModel
+﻿@model Tactsoft.Core.ViewModel.ReportViewModel
 @{
     ViewData["Title"] = "Print Invoice";
     int i = 1;
@@ -59,11 +59,11 @@
         <table class="mt-4 table align-middle table-borderless table-sm">
             <thead  style="background-color:cadetblue; text-align:left">
                 <tr>
-                    <th scope="col">SL.</th>
-                    <th scope="col">Item Name</th>
-                    <th scope="col" style="width: 100px">Quantity</th>
-                    <th scope="col" style="width: 140px">Price per unit</th>
-                    <th scope="col" style="width: 100px">Amount</th>
+                    <th>SL.</th>
+                    <th>Item Name</th>
+                    <th style="width: 100px">Quantity</th>
+                    <th style="width: 140px">Price per unit</th>
+                    <th style="width: 100px">Amount</th>
                 </tr>
             </thead>
             <tbody>
@@ -80,21 +80,21 @@
                     subTotal += item.Amount;
                 }
 
-                <tr style="border-color:#ffffff">
+                <tr style="border-color:#fff">
                     <td></td>
                     <td></td>
                     <td></td>
                     <td>Sub total</td>
                     <td>@(subTotal)</td>
                 </tr>                
-                <tr style="border-color:#ffffff">
+                <tr style="border-color:#fff">
                     <td></td>
                     <td></td>
                     <td></td>
                     <td>Vat (@Model.PurchaseViewModel.VatPercent)%</td>
                     <td>@Model.PurchaseViewModel.VatAmount</td>
                 </tr>
-                <tr style="border-color:#ffffff">
+                <tr style="border-color:#fff">
                     <td></td>
                     <td></td>
                     <td></td>

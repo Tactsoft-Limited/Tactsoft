@@ -12,5 +12,6 @@ namespace Tactsoft.Service.Services
     public interface ISupplierService:IBaseService<Supplier>
     {
         IEnumerable<SelectListItem> Dropdown();
+        string NameById(long id);
     }
 }

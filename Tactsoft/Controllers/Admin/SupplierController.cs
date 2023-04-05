@@ -30,9 +30,10 @@ namespace Tactsoft.Controllers.Admin
         }
 
         // GET: SupplierController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var supplier = await _supplierService.FindAsync(x=>x.Id==id, x=>x.Country,x=>x.State,x=>x.City);
+            return View(supplier);
         }
 
         // GET: SupplierController/Create
@@ -68,18 +69,31 @@ namespace Tactsoft.Controllers.Admin
         }
 
         // GET: SupplierController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var supplier = await _supplierService.FindAsync(id);
+            if (supplier == null)
+            {
+                return NotFound();
+            }
+            ViewData["CountryId"] = _countryService.Dropdown();
+            ViewData["StateId"] = _stateService.Dropdown();
+            ViewData["CityId"] = _cityService.Dropdown();
+
+            return View(supplier);
         }
 
         // POST: SupplierController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(Supplier supplier)
         {
             try
             {
+                if (ModelState.IsValid)
+                {
+                    await _supplierService.UpdateAsync(supplier);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch

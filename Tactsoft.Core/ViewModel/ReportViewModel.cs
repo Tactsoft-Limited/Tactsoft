@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tactsoft.Core.ViewModel
 {
-    public class InvoiceReportViewModel
+    public class ReportViewModel
     {
         public SupplierInfoViewModel SupplierInfoViewModel { get; set; }
         public PurchaseViewModel PurchaseViewModel { get; set; }

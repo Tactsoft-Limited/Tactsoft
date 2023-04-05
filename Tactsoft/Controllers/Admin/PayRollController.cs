@@ -57,7 +57,6 @@ namespace Tactsoft.Controllers.Admin
             return View(new SalarySetupModel());
         }
 
-
         [HttpPost]
         public IActionResult SalarySetup(SalarySetupModel model)
         {
@@ -90,7 +89,10 @@ namespace Tactsoft.Controllers.Admin
             {
                 foreach (var item in ad)
                 {
-                    salarySetupModel.SalarySetupList.Add(new SalarySetupList { AllowanceDeductionId = item.Id, AllowanceDeductionName = item.AllowanceDeductionName, AllowanceDeductionType = item.AllowanceDeductionType });
+                    salarySetupModel.SalarySetupList.Add(new SalarySetupList { 
+                        AllowanceDeductionId = item.Id, 
+                        AllowanceDeductionName = item.AllowanceDeductionName, 
+                        AllowanceDeductionType = item.AllowanceDeductionType });
                 }
                 return View(salarySetupModel);
             }

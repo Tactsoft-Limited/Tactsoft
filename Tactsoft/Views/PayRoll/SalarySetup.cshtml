@@ -105,3 +105,34 @@
         </div>
     </section>
 </div>
+
+@section Scripts{ 
+    <script>
+        $(document).ready(function () {
+
+            $('body').on('change', '#DepartmentId', function () {
+                var departmentId = $(this).val();
+                LoadBatch(departmentId)
+            })
+        });
+
+        function LoadBatch(departmentId) {
+            $.ajax({
+                type: "get",
+                url: "/Common/GetEmployeeByDepartment",
+                data: { departmentId: departmentId },
+                datatype: "json",
+                traditional: true,
+                success: function (data) {
+                    var employee = "<select id='EmployeeId'>";
+                    employee = employee + '<option value="">Select Employee</option>';
+                    for (var i = 0; i < data.length; i++) {
+                        employee = employee + '<option value=' + data[i].id + '>' + data[i].employeeName + "(" + data[i].idNumber + ")" + '</option>';
+                    }
+                    employee = employee + '</select>';
+                    $('#EmployeeId').html(employee);
+                }
+            });
+        }
+    </script>
+}

@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Tactsoft.Core.ViewModel.ReportByDateRangeViewModel>
+
+<div id="printableArea">
+    <div class="col-sm-12">
+        <div class="form-group">
+            <label>Showing Data on Date Range: @ViewBag.StartDate to @ViewBag.EndDate</label>
+        </div>
+    </div>
+
+    @if (Model != null)
+    {
+        <table style="display:inline-table !important" class="table table-bordered table-responsive text-nowrap">
+            <thead>
+                <tr>
+                    <th>Purchase Code</th>
+                    <th>Purchase Date</th>
+                    <th>Supplier Name</th>
+                    <th style="width: 120px">Item Name</th>
+                    <th style="width: 120px">Quantity</th>
+                    <th style="width: 120px">Purchase Price</th>
+                    <th style="width: 120px">Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    double tQuantity = 0;
+                    double tAmount = 0;
+                    <tr>
+                        <td>@item.PurchaseCode</td>
+                        <td>@item.PurchaseDate.ToString("MM/dd/yyyy")</td>
+                        <td>@item.Supplier</td>
+                        <td style="padding:0px!important" colspan="4">
+                            <table class="table table-bordered m-0">
+                                <tbody>
+
+                                    @foreach (var i in item.PurchaseDetailViewModels)
+                                    {
+                                        <tr>
+                                            <td style="width:100px">@i.ItemName</td>
+                                            <td style="width:100px">@i.Quantity</td>
+                                            <td style="width:100px">@i.PurchasePrice</td>
+                                            <td style="width:100px">@i.Amount</td>
+                                        </tr>
+
+                                        tQuantity += i.Quantity;
+                                        tAmount += i.Amount;
+                                    }
+
+                                    <tr class="text-bold">
+                                        <td style="width:100px;">Total:</td>
+                                        <td style="width:100px;">@tQuantity</td>
+                                        <td style="width:100px;"></td>
+                                        <td style="width:100px;">@tAmount</td>
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    }
+
+</div>

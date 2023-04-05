@@ -19,5 +19,11 @@ namespace Tactsoft.Service.Services
                 Value = x.Id.ToString(),
             });
         }
+
+        public string NameById(long id)
+        {
+            return Find(id).SupplierName;
+           
+        }
     }
 }

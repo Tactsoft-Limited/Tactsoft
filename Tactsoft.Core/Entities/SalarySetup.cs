@@ -14,12 +14,9 @@ namespace Tactsoft.Core.Entities
     {
         public long EmployeeId { get; set; }
         public Employee Employee { get; set; }
-
         public long AllowanceDeductionId { get; set; }
         public AllowanceDeduction AllowanceDeduction { get; set; }
-
         public Boolean IsPercent { get; set; }
-
         public double Value { get; set; }
     }
 }

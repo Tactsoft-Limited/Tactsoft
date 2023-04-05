@@ -21,9 +21,10 @@ namespace Tactsoft.Controllers.Admin
         }
 
         // GET: ItemController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var data = await _itemService.FindAsync(id);
+            return View(data);
         }
 
         // GET: ItemController/Create
@@ -52,18 +53,27 @@ namespace Tactsoft.Controllers.Admin
         }
 
         // GET: ItemController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            var item = await _itemService.FindAsync(id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+            return View(item);
         }
 
         // POST: ItemController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(Item item)
         {
             try
             {
+                if (ModelState.IsValid)
+                {
+                    await _itemService.UpdateAsync(item);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch

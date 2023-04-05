@@ -4,7 +4,11 @@
     ViewData["Title"] = "Purchase";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+<style>
+    .form-control:disabled, .form-control[readonly] {
+        background-color: #fff !important;
+    }
+</style>
 
 <div class="content-wrapper">
     <div class="content-header">
@@ -27,7 +31,7 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex justify-content-between">
-                        <h3 class="card-title">@ViewData["Title"] List</h3>
+                        <h3 class="card-title">@ViewData["Title"] Details</h3>
                         <a class="btn btn-primary btn-sm" onclick="PrintInvoice(@Model.Id)">
                             <i class="fa fa-print"></i>
                         </a>

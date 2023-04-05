@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Rotativa.AspNetCore;
 using Rotativa.AspNetCore.Options;
 using Tactsoft.Data.DbDependencies;
@@ -12,12 +13,14 @@ namespace Tactsoft.Controllers.Admin
         private readonly AppDbContext _context;
         private readonly IItemService itemService;
         private readonly IReportService _reportService;
+        private readonly IPurchaseService _purchaseService;
 
-        public ReportController(AppDbContext context, IItemService itemService, IReportService reportService)
+        public ReportController(AppDbContext context, IItemService itemService, IReportService reportService, IPurchaseService purchaseService)
         {
             this._context = context;
             this.itemService = itemService;
             this._reportService = reportService;
+            this._purchaseService = purchaseService;
         }
 
         public IActionResult PrintInvoice(long id)
@@ -32,10 +35,25 @@ namespace Tactsoft.Controllers.Admin
             var rpt = new ViewAsPdf();
             rpt.PageOrientation = Orientation.Portrait;
             rpt.CustomSwitches = footer;
-            rpt.FileName = "Purchase_Invoice" + id + ".pdf";
+            rpt.FileName = "Purchase_Invoice" + result.PurchaseViewModel.PurchaseCode + ".pdf";
             rpt.ViewName = "DownloadInvoicePDF";
             rpt.Model = result;
             return rpt;
+        }
+
+        public ActionResult ReportByDateRange()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ReportByDateRange(DateTime startDate, DateTime endDate)
+        {
+            ViewBag.StartDate = startDate.ToString("dd/MM/yyyy");
+            ViewBag.EndDate = endDate.ToString("dd/MM/yyyy");
+            var data = _reportService.ReportByDateRange(startDate, endDate);
+
+            return View(data);
         }
 
     }

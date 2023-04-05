@@ -1,4 +1,4 @@
-﻿@model Tactsoft.Core.ViewModel.InvoiceReportViewModel
+﻿@model Tactsoft.Core.ViewModel.ReportViewModel
 @{
     ViewData["Title"] = "Print Invoice";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
@@ -12,7 +12,7 @@
                     <h3 class="m-0">@ViewData["Title"]</h3>
                 </div>
                 <div class="col-sm-6 text-end">
-                    <button class="btn btn-info btn-sm" onclick="printDiv('printableArea')"><span class="fa fa-print"></span></button>
+                    <a class="btn btn-primary btn-sm" onclick="printDiv('printableArea')"><span class="fa fa-print"></span></a>
                     <a class="btn btn-success btn-sm" onclick="DownloadPDF('@Model.PurchaseViewModel.Id')"><i class="fa fa-download"></i></a>
                 </div>
             </div>
@@ -39,4 +39,5 @@
     var DownloadPDF = function (TranId) {
         location.href = "/Report/DownloadInvoicePDF?id=" + @Model.PurchaseViewModel.Id;
     };
+
 </script>

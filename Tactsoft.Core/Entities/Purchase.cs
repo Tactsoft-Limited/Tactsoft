@@ -21,7 +21,7 @@ namespace Tactsoft.Core.Entities
 
         [Display(Name = "Supplier")]
         [Required]
-        public long? SupplierId { get; set; }
+        public long SupplierId { get; set; }
 
         [Display(Name = "ATTN")]
         public string Attn { get; set; }
